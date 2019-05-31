@@ -1,0 +1,2 @@
+<import src="./red_box.vue.wxml" />
+    <template is="c3bb6086" data="{{ ...$root['0'], $root }}"/>

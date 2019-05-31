@@ -1,0 +1,76 @@
+page {
+		background-color: #EEEEEE;
+		padding-top: ;
+	}
+
+	.ttl_right {
+		font-size: 28upx;
+		color:#fff;
+		text-align: center;
+	}
+
+	.info {
+		width: 100%;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		background-color: #FFFFFF;
+		display: flex;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		align-items: center;
+		border-bottom: 1px solid #EEEEEE;
+	}
+
+	.info .check {
+		width: 48upx;
+		height: 48upx;
+		margin-left: 20upx;
+	}
+	.info .notice{
+		margin-left: 20upx;
+		width: 88vw;
+	}
+	.info_top {
+		display: flex;
+		justify-content: space-between;
+		height: 2rem;
+		line-height: 2rem;
+		width: 90%;
+	}
+
+	.info_title {
+		width: 50%;
+		display: flex;
+		justify-content: flex-start;
+	}
+
+	.info_title text {
+		font-size: 27upx;
+		font-weight: bold;
+		color: rgba(51, 51, 51, 1);
+	}
+
+	.info_circle {
+		width: 0.3rem;
+		height: 0.3rem;
+		border-radius: 100%;
+		background-color: #FF0000;
+		margin-left: 0.2rem;
+		margin-top: 0.8rem;
+	}
+
+	.info_time {
+		width: 40%;
+		font-size: 21upx;
+		color: #999999;
+		text-align: right;
+	}
+
+	.info_state {
+		width: 90%;
+		height: 2rem;
+		font-size: 26upx;
+		font-weight: 400;
+		color: rgba(51, 51, 51, 1);
+		line-height: 2rem;
+	}

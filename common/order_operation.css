@@ -1,0 +1,71 @@
+page {
+	background: #fff;
+}
+.navigation text {
+	text-align: left;
+}
+.order_menu{
+	display: flex;
+	justify-content: space-around;
+	background: #ED721F;
+	color:#fff;
+	font-size: 26upx;
+	padding-bottom: 5vw;
+}
+.order_menu image{
+	width: 10vw;
+	height: 10vw;
+	margin: 3vw auto;
+	display: block;
+}
+.order_money{
+	width: 94vw;
+	padding: 25upx;
+}
+.h3{
+	width: 100%;
+	font-size:32upx;
+	background: #fff;
+	padding: 25upx 25upx;
+}
+page .order_list{
+	background: #fff;
+	width: 100%;
+	margin-top: 0;
+	display: flex;
+	justify-content: space-between;
+	padding: 41upx 0;
+}
+.order_list .head_portrait{
+    width: 120upx;
+	height:120upx;
+	flex: 2;
+}
+.order_list .order_infor{
+	flex: 8;
+	border-bottom:1px solid #EEE;
+	padding-bottom:38upx;
+}
+.order_list .head_portrait image{
+    width: 120upx;
+	height:120upx;
+}
+.order_list .name{
+	font-size: 28upx;
+	font-weight: bold;
+}
+.order_list .time{
+	font-size:22upx;
+	color:#999;
+	display: block;
+	margin: 26upx 0;
+}
+.order_list .number{
+	font-size:26upx;
+	display: flex;
+	justify-content: space-between;
+}
+.order_list .money{
+	font-size: 28upx;
+	font-weight: bold;
+}

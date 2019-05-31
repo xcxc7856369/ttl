@@ -1,0 +1,53 @@
+.query {
+	display: flex;
+	justify-content: center;
+	width: 100vw;
+	position: fixed;
+	height: 30px;
+	padding: 15upx 0;
+	background: #fff;
+	z-index: 999;
+}
+
+.query input {
+	width: 70vw;
+	height: 60upx;
+	border: none;
+	background: #EEE;
+	font-size: 26upx;
+	padding-left: 20upx;
+	border-radius: 5px;
+}
+
+.query_btn {
+	width: 130upx;
+	height: 60upx;
+	background: #ED721F;
+	line-height: 60upx;
+	text-align: center;
+	color: #fff;
+	font-size: 26upx;
+	border-radius: 5px;
+	margin-left: 3vw;
+}
+
+.query image {
+	width: 25upx;
+	height: 13upx;
+	position: absolute;
+	top: 20px;
+	right: 100px;
+}
+.order_list {
+	position: relative;
+}
+
+.bottom {
+	display: flex;
+	justify-content: space-between;
+}
+.no_data{
+	margin-top: 10vh;
+	color:#999;
+	text-align: center;
+}

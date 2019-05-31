@@ -1,0 +1,155 @@
+
+.div {
+	font-size: 28upx;
+	color: #333;
+	background: #fff;
+	border: 1px solid #EEE;
+	min-height: 100upx;
+	line-height: 100upx;
+	padding: 0 20upx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.div input {
+	width: 70vw;
+}
+
+.add_img {
+	height: 274upx;
+	line-height: 274upx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10upx 0;
+}
+
+.add_img image {
+	width: 120upx;
+	height: 120upx;
+	vertical-align: middle;
+}
+.add_img .bg_img{
+	width: 200upx;
+	height: 200upx;
+}
+.wares_infor {
+	margin: 10upx 0;
+}
+
+.describe {
+	width: 100vw;
+}
+
+.describe textarea {
+	width: 100%;
+	height: 200upx;
+	background: #fff;
+	font-size: 26upx;
+	color:#999;
+	padding: ;
+}
+
+.wares_describe_infor {
+	margin: 20upx 0;
+}
+
+.group_buying {
+	display: flex;
+	justify-content: space-between;
+}
+.norms_box .norms_label{
+	width: 70vw;
+	margin-top: 0;
+}
+.mask{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	background: rgba(0,0,0,0.4);
+	top: 0;
+	z-index: 9999;
+}
+.norms{
+	width: 80vw;
+	background: #fff;
+	position: fixed;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 10px;
+	padding: 30upx;
+}
+.norms label{
+	display: block;
+	padding: 20upx;
+	font-size: 32upx;
+}
+.norms input{
+	border:1px solid #EEE;
+	height: 60upx;
+	padding-left:20upx ;
+	font-size: 26upx;
+	border-radius: 5px;
+	color:#999;
+}
+.norms_title{
+	width: 70vw;
+	color:#999;
+	font-size: 26upx;
+}
+.norms_text{
+	position: relative;
+}
+.add_norms{
+	display: block;
+	width: 120upx;
+	height: 60upx;
+	line-height: 60upx;
+	text-align: center;
+	font-size: 26upx;
+	color:#fff;
+	background: #ED721F;
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-radius: 0 5px 5px 0;
+	z-index: 999;
+}
+.norms_label {
+	width: 60vw;
+	min-height: 50upx;
+	margin-top: 20upx;
+}
+.norms_label text{
+  display: inline-block;
+  height: 50upx;
+  line-height: 50upx;
+  padding: 0 20upx;
+  text-align: center;
+  font-size: 26upx;
+  color: #ED721F;
+  border:1px solid  #ED721F;
+  border-radius: 10upx;
+  margin-right: 10upx;
+}
+.btn{
+	margin-top: 40upx;
+	display: flex;
+	justify-content: space-between;
+}
+.btn text{
+	display: block;
+	width: 260upx;
+	height: 60upx;
+	line-height: 60upx;
+	text-align: center;
+	font-size: 26upx;
+	color: #ED721F;
+	border:1px solid  #ED721F;
+	border-radius: 10upx;
+}
+.btn .determine{
+	color:#fff;
+	background: #ED721F;
+}

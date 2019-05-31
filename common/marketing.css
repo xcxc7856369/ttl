@@ -1,0 +1,108 @@
+page{
+	background: #fff !important;
+}
+.segmented {
+	position:fixed!important;
+	height: 50px;
+}
+
+.segmented .tab_list {
+	width: 50% !important;
+}
+
+.tool {
+	padding: 20upx 0;
+	margin-top: 50px;
+}
+
+.tool>view {
+	width: 700upx;
+	height: 270upx;
+	margin: 0 auto;
+	margin-bottom: 20upx;
+	position: relative;
+}
+
+.tool>view text {
+	font-size: 40upx;
+	font-weight: bold;
+}
+
+.tool>view navigator {
+	margin-top: 30upx;
+	font-size: 26upx;
+	color: #808080;
+}
+
+.tool>view image {
+	width: 700upx;
+	height: 270upx;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.tool>view view {
+	width: 640upx;
+	height: 210upx;
+	position: absolute;
+	top: 60upx;
+	left: 60upx;
+	z-index: 999;
+}
+.activity{
+	padding: 30upx 20upx;
+	border-bottom:1px solid #EEE; 
+	color:#666;
+	font-size: 24upx;
+	position: relative;
+}
+.activity view{
+	margin-top: 30upx;
+}
+.activity_box{
+	margin-top: 50px;
+}
+.activity .top{
+	display: flex;
+	justify-content: space-between;
+	height:100upx;
+	line-height: 100upx;
+}
+.activity .title{
+	font-size: 30upx;
+	font-weight: bold;
+}
+.activity .state{
+	font-size: 26upx;
+}
+.activity .bt{
+	position: absolute;
+	right: 20upx;
+	bottom: 30upx;
+}
+.activity .bt text{
+	display: inline-block;
+	width: 120upx;
+	height: 70upx;
+	font-size: 28upx;
+	color:#ED721F;
+	border:1px solid #ED721F;
+	text-align: center;
+	line-height: 70upx;
+	margin-left: 20upx;
+	border-radius: 10upx;
+}
+.activity .bt .release{
+	color:#fff;
+	background: #ED721F;
+}
+.red{
+	color:#FF3333;
+}
+.green{
+	color:green;
+}
+.black{
+	color:black;
+}

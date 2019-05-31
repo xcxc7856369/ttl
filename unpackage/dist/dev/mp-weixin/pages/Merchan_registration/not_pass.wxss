@@ -1,0 +1,29 @@
+
+.img{
+	display: block;
+	width: 327.08rpx;
+	height: 262.5rpx;
+	margin: 20vw auto 0;
+}
+text{
+	display: block;
+	font-size: 45.83rpx;
+	text-align: center;
+}
+.h1{
+	display: block;
+	color:#000000;
+	margin: 20px 0;
+}
+.p{
+	font-size: 30.55rpx;
+	color:#888888;
+}
+button{
+	width: 80vw;
+	margin: 0 auto; 
+	font-size: 16px;
+	margin-top: 20vw;
+	background: #ED721F !important;
+}
+

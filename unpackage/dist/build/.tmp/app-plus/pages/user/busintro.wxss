@@ -1,0 +1,36 @@
+
+page {
+	background-color: #EEEEEE;
+}
+.busintro {
+	width: 100vw;
+	background-color: #FFFFFF;
+	margin-top: 0.5rem;
+}
+.text_view {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	width: 100%;
+}
+.notice {
+	width: 90%;
+	height: 25rem;
+	padding-top: 0.5rem;
+	line-height: 1.2rem;
+	font-size: 26rpx;
+}
+.wordnum {
+	width: 90%;
+	height: 1rem;
+	font-size: 26rpx;
+	color: #333333;
+	margin: 3rem auto 0;
+	text-align: right;
+}
+

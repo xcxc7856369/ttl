@@ -1,0 +1,1 @@
+<view bind:__l="__l"><view><image></image></view><view><navigator url="/pages/user/outdoor">外景</navigator></view><view><image></image></view><view><navigator>内景</navigator></view><view><image></image></view><view><navigator>其他</navigator></view></view>

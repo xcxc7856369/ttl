@@ -1,0 +1,70 @@
+.top{
+	width: 95vw;
+	height: 236upx;
+	background: #FFF;
+	border-top:20upx solid #EEE;
+	border-bottom:20upx solid #EEE;
+	padding: 40upx 20upx;
+}
+.top .title{
+	font-size:26upx;
+	color:#666;
+}
+.top .money{
+	margin-top: 20upx;
+	font-size: 54upx;
+	display: flex;
+	align-items: center;
+	margin-bottom: 34upx;
+}
+.top .tip{
+	font-size: 26upx;
+	color:#666;
+	height: 80upx;
+	line-height: 80upx;
+	border-top: 1px solid #EEE;
+	display: flex;
+	justify-content: space-between;
+}
+.top .tip .red{
+	color:#ED721F;
+}
+.mode{
+	width: 95vw;
+	padding: 30upx 20upx;
+}
+.alipay{
+	display: flex;
+	align-items: center;
+}
+.alipay image{
+	width: 42upx;
+	height: 42upx;
+}
+.alipay text{
+	font-size: 28upx;
+	color:#666;
+	margin-left: 20upx;
+}
+.choice image{
+	width: 34upx;
+	height: 34upx;
+}
+.mode_list{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.btn{
+	width: 96vw;
+	margin-top: 50upx;
+	background: #ED721F !important;
+}
+.bind{
+	font-size: 26upx;
+	color:#ED721F;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	padding: 20upx;
+}

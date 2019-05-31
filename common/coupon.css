@@ -1,0 +1,19 @@
+picker{
+	display: inline-block;	
+	vertical-align: middle;
+}
+input{
+display: inline-block;
+vertical-align: middle;
+}
+.div{
+	display: flex;
+}
+.amount{
+	display: inline-block;
+	width: 60vw;
+}
+.limit{
+	display: inline-block;
+	width: 60vw;
+}

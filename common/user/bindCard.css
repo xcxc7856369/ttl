@@ -1,0 +1,40 @@
+page{
+	background: #F5F5F5;
+}
+.div{
+	width: 100vw;
+	margin: 20upx 0;
+	padding: 0 30upx;
+	height: 97upx;
+	line-height: 97upx;
+	display: flex;
+	align-items: center;
+	background: #fff;
+	font-size: 26upx;
+}
+.div input{
+	margin-left: 30upx;
+}
+.getNumber{
+	width: 163upx !important;
+	height: 60upx !important;
+	line-height: 60upx !important;
+	border-radius: 30upx;
+	background: #F77C0D;
+	color:#fff;
+	text-align: center;
+	margin-left: 60upx !important;
+	font-size: 26upx !important;
+	border:none !important;
+	
+}
+.add{
+	background: #F77C0D !important;
+	font-size: 34upx ;
+	width: 90vw;
+	margin: 200upx auto;
+	border-radius: 50upx;
+}
+.active{
+	background: #EEE;
+}

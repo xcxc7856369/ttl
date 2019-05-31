@@ -1,0 +1,144 @@
+.box{
+	width: 100%;
+}
+.ttl_right{
+	display: flex;
+	justify-content: flex-start;
+}
+.evaluate{
+	display: flex;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #EEEEEE;
+	justify-content: center;
+}
+.eval{
+	display: flex;
+	width: 90%;
+	justify-content: space-between;
+}
+.e_left{
+	width:20%;
+}
+.e_left image{
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius: 100%;
+}
+.e_right{
+	width:80%;
+	overflow: hidden;
+}
+.e_name{
+	width:100%;
+	display: flex;
+	justify-content: center;
+	height: 1rem;
+	line-height: 1rem;
+	margin-top: 0.2rem;
+}
+.e_name view{
+	width:50%;
+	text-align: left;
+	color:#333333;
+	font-size: 26upx;
+	font-weight:bold;
+}
+.e_name text{
+	width: 50%;
+	text-align: right;
+	color:#999999;
+	font-size: 21upx;
+}
+.uni-rate{
+	margin-top: 0.1rem;
+	font-weight: bold;
+}
+.con{
+	line-height: 1rem;
+	width: 100%;
+	font-size: 28upx;
+	font-weight: 400;
+	color: #333333;
+	margin-top: 0.3rem;
+}
+.imglist{
+	width: 14.2rem;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 0.3rem;
+	flex-wrap: wrap;
+}
+.imglist image{
+	width:4.53rem;
+	height: 4.53em;
+	margin-top: 0.3rem;
+}
+.e_ope{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	height: 1rem;
+	line-height: 1rem;
+	margin-top:0.9rem;
+}
+.agree{
+	width: 50%;
+	display: flex;
+	justify-content: flex-start;
+	height: 1rem;
+	line-height: 1rem;
+}
+.agree image{
+	width:0.6rem;
+	height:0.6rem;
+	margin-top: 0.1rem;
+}
+.agree view{
+	color:#333333;
+	font-size: 23upx;
+	margin-left: 0.2rem;
+}
+.reply{
+	height: 1rem;
+	line-height: 1rem;
+	color:#666666;
+	font-size: 24upx;
+}
+.busreply{
+	background-color: #EEEEEE;
+	color:#333333;
+	font-size: 26upx;
+	line-height: 1.2rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	width: 14.2rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	margin-top: 0.6rem;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.busreply text{
+	color:#ED721F;
+}
+.replyContent{
+	width: 100%;
+	padding: 30upx 0;
+	height: 72upx;
+	line-height: 100upx;
+	position: fixed;
+	bottom: 0;
+	border-top:1px solid #DCDCDC;
+	background: #fff;
+}
+.replyContent input{
+	width:86vw;
+	height: 72upx;
+	border:1px solid #D2D2D2;
+	margin: 0 auto;
+	border-radius: 10upx;
+	font-size: 26upx;
+	padding-left: 20upx;
+	color:#999;
+}

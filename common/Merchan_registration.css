@@ -1,0 +1,225 @@
+.content_box {
+	width: 100vw;
+	overflow: hidden;
+}
+.navigation image {
+	width: 15.97upx;
+	height: 29.86upx;
+	position: absolute;
+	top: 32px;
+	left: 20px;
+	vertical-align: middle;
+}
+
+.navigation text {
+	color: #fff;
+	width: 100vw;
+	display: block;
+	text-align: center;
+	font-size: 30.55upx;
+}
+
+.step {
+	width: 100%;
+	height:50px;
+	line-height: 50px;
+	background-color: #fff;
+	position: fixed;
+	display: flex;
+	justify-content: space-around;
+	z-index: 999;
+}
+
+.step view {
+	color: #cccc;
+	font-size: 30.55upx;
+	text-align: center;
+	letter-spacing: 9.72upx;
+	position: relative;
+	padding-left: 40upx;
+}
+
+.step view:nth-child(1) {
+	color: #E33D09;
+}
+
+.step view image {
+	width: 36upx;
+	height: 36upx;
+	vertical-align: middle;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.step .basic_infor {
+	color: #008000 !important;
+}
+
+.step .shop_infor {
+	color: #E33D09;
+	padding: 6.94upx 0;
+}
+
+.infor_list {
+	width: 300vw;
+	padding-top: 26.38upx;
+	display: flex;
+	position: relative;
+	left: 0;
+	transition: all 0.4s linear;
+	flex: flex-direction;
+}
+
+.basic_content {
+	background: #fff;
+	padding-bottom: 20px;
+	position: relative;
+}
+
+.infor_list .infor_box {
+	width: 100vw;
+	margin: 0 2vw;
+	border-radius: 5px;
+	padding: 0 0 40upx 0;
+}
+
+.infor_box .tips {
+	color: #888888;
+	font-size: 26.38upx;
+}
+
+.infor_box .div {
+	line-height: 83.33upx;
+	padding: 0 13.88upx;
+	border-bottom: #E6E6E6;
+	font-size: 30.55upx;
+	border-bottom: 1.38upx solid #E6E6E6;
+	align-items: center;
+	background: #fff;
+	justify-content: flex-start;
+}
+
+.infor_box>view text {
+	width: 35%;
+	display: inline-block;
+}
+
+.infor_box>view input {
+	display: inline-block;
+	width: 50vw;
+	vertical-align: middle;
+}
+
+.step_next {
+	color: #fff;
+	width: 722.22upx;
+	height: 86.8upx;
+	font-size: 30.55upx;
+	background: linear-gradient(to right, #FF980E, #E33D09);
+	margin-top: 20VW;
+}
+
+.error {
+	border: 1px solid red;
+}
+
+.infor_box .img_verification_box input {
+	width: 29.5vw;
+}
+
+.verification {
+	width: 27.5vw;
+	height: 11.5vw;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.infor_box .sms input {
+	width: 29.5vw;
+	vertical-align: middle;
+}
+
+.infor_box .sms button {
+	text-align: center;
+	width: 27.5vw;
+	height: 11.5vw;
+	font-size: 26.38upx;
+	color: #fff;
+	border-radius: 0;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 11.5vw;
+}
+
+.smsT {
+	background: linear-gradient(to right, #FF980E, #E33D09);
+}
+
+.smsF {
+	background: #ccc;
+}
+
+.green {
+	color: green !important;
+}
+
+.orange {
+	color: #E33D09 !important;
+}
+
+.next_page {
+	left: -100vw;
+}
+
+.shop_page {
+	left: -200vw;
+}
+
+.
+
+/* 门店信息 */
+.div_photo text {
+	display: block;
+	padding: 20upx 0;
+	font-size: 30.55upx;
+}
+
+.div_photo .add_img {
+	width: 100%;
+	height: 140.83upx;
+	padding-top: 34.72upx;
+	display: flex;
+}
+
+.div_photo .add_img image {
+	width: 100upx;
+	height: 100upx;
+	margin-left: 2vw;
+}
+
+.qualifications_page .div input {
+	width: 93vw;
+}
+
+.uni-list-cell {
+	margin-right: 10vw;
+}
+
+.uni-list-cell view {
+	display: inline-block;
+}
+
+.sex radio-group {
+	display: inline-block;
+}
+
+.tab {
+	padding: 20upx 0;
+	font-size: 32upx;
+}
+
+.tab.active {
+	color: #f00;
+}

@@ -1,0 +1,219 @@
+
+@charset "UTF-8";
+.uni-rate {
+	line-height: 0;
+	font-size: 0;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row
+}
+.uni-rate-icon {
+	position: relative;
+	line-height: 0;
+	font-size: 0;
+	display: inline-block
+}
+.uni-rate-icon-on {
+	line-height: 1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden
+}
+
+.box{
+	width: 100%;
+}
+.ttl_right{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+}
+.evaluate{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #EEEEEE;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+.eval{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 90%;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.e_left{
+	width:20%;
+}
+.e_left image{
+	width: 2.4rem;
+	height: 2.4rem;
+	border-radius: 100%;
+}
+.e_right{
+	width:80%;
+	overflow: hidden;
+}
+.e_name{
+	width:100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	height: 1rem;
+	line-height: 1rem;
+	margin-top: 0.2rem;
+}
+.e_name view{
+	width:50%;
+	text-align: left;
+	color:#333333;
+	font-size: 26rpx;
+	font-weight:bold;
+}
+.e_name text{
+	width: 50%;
+	text-align: right;
+	color:#999999;
+	font-size: 21rpx;
+}
+.uni-rate{
+	margin-top: 0.1rem;
+	font-weight: bold;
+}
+.con{
+	line-height: 1rem;
+	width: 100%;
+	font-size: 28rpx;
+	font-weight: 400;
+	color: #333333;
+	margin-top: 0.3rem;
+}
+.imglist{
+	width: 14.2rem;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	margin-top: 0.3rem;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.imglist image{
+	width:4.53rem;
+	height: 4.53em;
+	margin-top: 0.3rem;
+}
+.e_ope{
+	width: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	height: 1rem;
+	line-height: 1rem;
+	margin-top:0.9rem;
+}
+.agree{
+	width: 50%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: start;
+	-webkit-justify-content: flex-start;
+	    -ms-flex-pack: start;
+	        justify-content: flex-start;
+	height: 1rem;
+	line-height: 1rem;
+}
+.agree image{
+	width:0.6rem;
+	height:0.6rem;
+	margin-top: 0.1rem;
+}
+.agree view{
+	color:#333333;
+	font-size: 23rpx;
+	margin-left: 0.2rem;
+}
+.reply{
+	height: 1rem;
+	line-height: 1rem;
+	color:#666666;
+	font-size: 24rpx;
+}
+.busreply{
+	background-color: #EEEEEE;
+	color:#333333;
+	font-size: 26rpx;
+	line-height: 1.2rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	width: 14.2rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	margin-top: 0.6rem;
+	overflow: hidden;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.busreply text{
+	color:#ED721F;
+}
+.replyContent{
+	width: 100%;
+	padding: 30rpx 0;
+	height: 72rpx;
+	line-height: 100rpx;
+	position: fixed;
+	bottom: 0;
+	border-top:1px solid #DCDCDC;
+	background: #fff;
+}
+.replyContent input{
+	width:86vw;
+	height: 72rpx;
+	border:1px solid #D2D2D2;
+	margin: 0 auto;
+	border-radius: 10rpx;
+	font-size: 26rpx;
+	padding-left: 20rpx;
+	color:#999;
+}
+

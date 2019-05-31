@@ -1,0 +1,2 @@
+<import src="./coupon.vue.wxml" />
+    <template is="0abb3b19" data="{{ ...$root['0'], $root }}"/>

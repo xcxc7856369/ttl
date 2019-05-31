@@ -1,0 +1,5 @@
+<import src="/components/uni-icon/uni-icon.vue.wxml" />
+<import src="/components/uni-popup/uni-popup.vue.wxml" />
+<import src="/components/uni-rate/uni-rate.vue.wxml" />
+<import src="/common/slots.wxml" />
+

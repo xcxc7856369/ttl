@@ -1,0 +1,143 @@
+page{
+	background: #EEE;
+}
+.navigation{
+	width: 100%;
+}
+.navigation text{
+	display: inline-block !important;
+}
+.add_wares{	
+height: 100%;
+vertical-align: middle;
+}
+.add_wares image{
+	width: 40upx;
+	height: 40upx;
+	vertical-align: middle;
+}
+.top_box {
+	display: flex;
+	justify-content: space-between;
+	background: #fff;
+	width: 100vw;
+	height:50px;
+	position: fixed;
+	z-index: 3;
+}
+
+.sort {
+	height: 8vh;
+	width: 20vw;
+	line-height: 8vh;
+}
+
+.sort .title {
+	position: absolute;
+	background: #fff;
+	z-index: 99999;
+	padding: 0 2vw;
+	font-size: 26upx;
+	width: 24vw;
+	display: flex;
+	align-items: center;
+}
+
+.sort .list {
+	position: absolute;
+	transition: all 0.3s linear;
+	bottom: 0;
+	z-index:2;
+	background: #fff;
+	width: 92vw;
+	left: 0;
+	padding: 0 4vw;
+	font-size: 26upx;
+}
+.sort .list.right{
+	text-align: right;
+}
+.sort .title image{
+	width: 14upx;
+	height:12upx;
+	margin-left: 20upx;
+}
+.active {
+	transform: translateY(100%);
+}
+
+.wares_box {}
+
+.wares_box .wares_list {
+	width: 96%;
+	margin: 20upx auto;
+	position: relative;
+	display: flex;
+	background: #fff;
+}
+.wares_box .wares_list image{
+	width: 165upx;
+	height: 165upx;
+	margin-left: 2vw;
+	margin-top: 2vw;
+}
+.wares_infor{
+	width: 100%;
+	position: relative;
+	margin-left: 20upx;
+}
+.wares_infor>text{
+	display: block;
+	margin: 10px 0;
+}
+.wares_infor .sales_volume{
+	color:#999;
+	font-size: 22upx;
+}
+.wares_infor .name{
+	color:#333;
+	font-size:28upx;
+	font-weight: bold;
+}
+.wares_infor text:last-child{
+	margin-top: 62upx;
+}
+.wares_infor .money{
+	color:#EE1010;
+	font-size: 28upx;
+	padding-top: 40upx;
+}
+.wares_box .wares_list .down {
+	display: block;
+	position: absolute;
+	bottom: 20upx;
+	right: 6vw;
+	border-radius: 1vw;
+	height:60upx !important;
+	line-height: 50upx !important;
+	padding: 1vw 2vw !important;
+	width: 120upx !important;
+	background: #ED721F;
+	color:#fff;
+	text-align: center;
+	font-size: 26upx;
+}
+
+.tabBar {
+	width: 100%;
+	display: flex;
+	position: fixed;
+	bottom: 0;
+	background: orange;
+}
+
+.tabBar navigator {
+	width: 25%;
+	text-align: center;
+}
+ .tab_active{
+	 color:#ED721F;
+ }
+ .off_shelf{
+	 background: #D2D2D2 !important;
+ }

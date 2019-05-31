@@ -1,0 +1,207 @@
+page{
+	background: #EEE;
+}
+input{
+	text-align: right;
+}
+.content .title{
+	height:100upx;
+	line-height:100upx;
+	font-size: 26upx;
+}
+.title text{
+	font-size: 24upx;
+	color:#999;
+}
+.main_img{
+	height: 220upx;
+	background: #fff;
+}
+.main_img image{
+	width: 160upx;
+	height: 160upx;
+	margin-top: 30upx;
+	margin-left: 25upx;
+}
+.img_list{
+	min-height: 260upx;
+	background: #fff;
+	padding:30upx 0;
+	display: flex;
+	flex-wrap:wrap ;
+	position: relative;
+}
+.img_list .photo .fm{
+	display: block;
+	width: 700upx;
+	height: 320upx;
+}
+ .content .img_list .add_img{
+	 border:2px dashed #EEE;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+ }
+ .content .img_list .add_img image{
+	width: 73upx;
+	height: 73upx;
+}
+.active{
+	width: 100vw;
+	height: 360upx;
+	background: #fff;	
+}
+.img_list .photo{
+	width: 100vw;
+	height: 360upx;
+	background: #fff;	
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.div{
+	padding: 0 20upx;
+	margin-top: 20upx;
+	background: #fff;
+}
+ .div_list{
+	height: 100upx;
+	border-bottom: 1px solid #EEE;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 28upx;
+}
+.div_list input{
+	width: 50vw;
+	color:#999;
+}
+.div_list image{
+	width: 14upx;
+	height: 26upx;
+	margin-left: 30upx;
+	vertical-align: middle;
+}
+.div_list>view text{
+	color:#999;
+}
+.div_list picker{
+	color:#999;
+}
+.notice{
+	margin-top: 20upx;
+	font-size: 24upx;
+	background: #fff;
+}
+.notice image{
+	width: 15upx;
+	height: 15upx;
+	margin-right: 20upx;
+	vertical-align: middle;
+}
+.notice_title{
+	font-size: 28upx;
+	padding: 20upx 20upx;
+}
+.notice .notice_list{
+	height: 80upx;
+	line-height: 80upx;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20upx;
+}
+.notice_list view:last-child image{
+	width: 34upx;
+	height: 34upx;
+}
+.introduce{
+	margin-top: 20upx;
+	background: #fff;
+	padding: 20upx;
+}
+.introduce .title{
+	font-size: 28upx;
+	color:#333;
+	padding-left: 0;
+}
+.introduce text{
+	font-size: 24upx;
+	color:#666;
+}
+
+.img_list>view{
+	width: 224upx;
+	height:224upx;
+	margin-left: 20upx;
+	margin-top: 20upx;
+	position: relative;
+}
+.img_list>view image:first-child{
+	width: 224upx;
+	height:224upx;
+}
+.img_list .clear{
+	width: 38upx;
+	height: 38upx;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.mask{
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	background: rgba(0,0,0,0.4);
+	top: 0;
+	z-index: 9999;
+}
+.norms{
+	width: 80vw;
+	background: #fff;
+	position: fixed;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 10px;
+	padding: 30upx;
+}
+.norms .title{
+	font-size: 34upx;
+	text-align: center;
+}
+.btn{
+	margin-top: 40upx;
+	display: flex;
+	justify-content: space-between;
+}
+.btn text{
+	display: block;
+	width: 260upx;
+	height: 60upx;
+	line-height: 60upx;
+	text-align: center;
+	font-size: 26upx;
+	color: #ED721F;
+	border:1px solid  #ED721F;
+	border-radius: 10upx;
+}
+.btn .determine{
+	color:#fff;
+	background: #ED721F;
+}
+.policy_list{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 28upx;
+	height: 80upx;
+	line-height: 80upx;
+}
+.policy_list image{
+	width: 34upx;
+	height: 34upx;
+}

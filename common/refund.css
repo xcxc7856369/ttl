@@ -1,0 +1,14 @@
+.navigation text {
+	padding-left: 15vw;
+	text-align: left;
+}
+.order_list{
+	height: 30vw;
+	border:1px solid #000;
+	position: relative;
+}	
+.order_list .state{
+	position: absolute;
+	bottom: 2vw;
+	right: 2vw;
+}

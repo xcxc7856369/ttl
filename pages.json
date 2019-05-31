@@ -1,0 +1,352 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},
+		{
+			"path": "pages/new_order/new_order",
+			"style": {
+				"navigationBarTitleText": "新订单",
+				"enablePullDownRefresh": true,
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"color": "#ff3333",
+						"height": "10%",
+						"offset": "20%",
+						"contentdown": {
+							"caption": "下拉可刷新自定义文本"
+						},
+						"contentover": {
+							"caption": "释放可刷新自定义文本"
+						},
+						"contentrefresh": {
+							"caption": "正在刷新自定义文本"
+						}
+					}
+				}
+			}
+		},
+
+		{
+			"path": "pages/Merchan_registration/Merchan_registration",
+			"style": {
+				"navigationBarTitleText": "镗镗锣"
+			}
+		},
+		{
+			"path": "pages/Merchan_registration/audit_success",
+			"style": {
+				"navigationBarTitleText": "商家入驻申请"
+			}
+		},
+		{
+			"path": "pages/login/register",
+			"style": {
+				"navigationBarTitleText": "注册",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},
+		{
+			"path": "pages/order_operation/order_operation",
+			"style": {
+				"navigationBarTitleText": "鲁西肥牛"
+			}
+		},
+		{
+			"path": "pages/order_operation/order_enquiry",
+			"style": {
+				"navigationBarTitleText": "订单查询"
+			}
+		}, {
+			"path": "pages/order_operation/refund",
+			"style": {
+				"navigationBarTitleText": "退款订单",
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"color": "#ff3333",
+						"height": "10%",
+						"offset": "20%",
+						"contentdown": {
+							"caption": "下拉可刷新自定义文本"
+						},
+						"contentover": {
+							"caption": "释放可刷新自定义文本"
+						},
+						"contentrefresh": {
+							"caption": "正在刷新自定义文本"
+						}
+					}
+				}
+			}
+		}, {
+			"path": "pages/order_operation/refund_details",
+			"style": {
+				"navigationBarTitleText": "退款订单详情"
+			}
+		}, {
+			"path": "pages/order_operation/order_statistics",
+			"style": {
+				"navigationBarTitleText": "订单统计"
+			}
+		}, {
+			"path": "pages/wares/wares",
+			"style": {
+				"navigationBarTitleText": "商品管理"
+			}
+		}, {
+			"path": "pages/wares/add_wares",
+			"style": {
+				"navigationBarTitleText": "商品管理"
+			}
+		}, {
+			"path": "pages/Merchan_registration/in_audit",
+			"style": {
+				"navigationBarTitleText": "审核中"
+			}
+		}, {
+			"path": "pages/Merchan_registration/not_pass",
+			"style": {
+				"navigationBarTitleText": "未通过"
+			}
+		},
+		{
+			"path": "pages/user/marketing",
+			"style": {
+				"navigationBarTitleText": "营销工具"
+			}
+		},
+		{
+			"path": "pages/user/group_buy",
+			"style": {
+				"navigationBarTitleText": "创建团购"
+			}
+		},
+		{
+			"path": "pages/user/red_box",
+			"style": {
+				"navigationBarTitleText": "创建红包"
+			}
+		},
+		{
+			"path": "pages/user/coupon",
+			"style": {
+				"navigationBarTitleText": "创建优惠卷"
+			}
+		},
+		{ 
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "用户中心"
+			}
+		},{
+		    "path" : "pages/user/store",
+		    "style" : {
+				"navigationBarTitleText": "店铺设置",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},{
+		    "path" : "pages/user/basicinfo",
+		    "style" : {
+				
+			}
+		},{
+		    "path" : "pages/user/album",
+		    "style" : {
+				"navigationBarTitleText": "商家相册",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},{
+		    "path" : "pages/user/outdoor",
+		    "style" : {
+				"navigationBarTitleText": "外景",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},{
+		    "path" : "pages/user/storemag",
+		    "style" : {
+				"navigationBarTitleText": "店铺管理",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},{
+		    "path" : "pages/user/msgcenter",
+		    "style" : {
+				"navigationBarTitleText": "消息中心",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},{
+		    "path" : "pages/user/extract",
+		    "style" : {
+				"navigationBarTitleText": "自提设置",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},{
+		    "path" : "pages/user/busnotice",
+		    "style" : {
+				"navigationBarTitleText": "店铺公告",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},{
+		    "path" : "pages/user/busintro",
+		    "style" : {
+				"navigationBarTitleText": "店铺介绍",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#FF750D"
+			}
+		},{
+		    "path" : "pages/tool/paycode",
+		    "style" : {
+				"navigationBarTitleText": "收款码",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/tool/voucher", 
+		    "style" : {
+				"navigationBarTitleText": "验券",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/tool/qrcode",
+		    "style" : {
+				"navigationBarTitleText": "二维码验证", 
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/tool/digital",
+		    "style" : {
+				"navigationBarTitleText": "数字验证",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/tool/success",
+		    "style" : {
+				"navigationBarTitleText": "验券",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/tool/fail",
+		    "style" : {
+				"navigationBarTitleText": "验券",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/tool/couponrecord",
+		    "style" : {
+				"navigationBarTitleText": "团购券验证记录",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/tool/coupon",
+		    "style" : {
+				"navigationBarTitleText": "团购券验证记录",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/user/evaluate",
+		    "style" : {
+				"navigationBarTitleText": "评价管理",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/scene/scene",
+		    "style" : {
+				"navigationBarTitleText": "店铺实景",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/user/cashout",
+		    "style" : {
+				"navigationBarTitleText": "提现",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/user/printer",
+		    "style" : {
+				"navigationBarTitleText": "打印机设置",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/login/retrieve",
+		    "style" : {
+				"navigationBarTitleText": "忘记密码",
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#ED721F"
+			}
+		},{
+		    "path" : "pages/user/withdrawMoney",
+		    "style" : {
+				"navigationBarTitleText": "提现" 
+			}
+		},{
+		    "path" : "pages/user/bindCard",
+		    "style" : {
+				"navigationBarTitleText": "绑卡" 
+			}
+		}
+	],
+
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "linear-gradient(red, blue);",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"color": "#666",
+		"selectedColor": "#ED721F",
+		"borderStyle": "black",
+		"backgroundColor": "#F8F8F8",
+		"list": [{
+				"pagePath": "pages/new_order/new_order",
+				"iconPath": "static/dcl-gray.png",
+				"selectedIconPath": "static/dcl-light.png",
+				"text": "待处理"
+			},
+			{
+				"pagePath": "pages/order_operation/order_operation",
+				"iconPath": "static/ddgl-gray.png",
+				"selectedIconPath": "static/ddgl-light.png",
+				"text": "订单管理"
+			},
+			{
+				"pagePath": "pages/wares/wares",
+				"iconPath": "static/spgl-gray.png",
+				"selectedIconPath": "static/spgl-light.png",
+				"text": "商品管理"
+			},
+			{
+				"pagePath": "pages/user/index",
+				"iconPath": "static/wd-gray.png",
+				"selectedIconPath": "static/wd.png",
+				"text": "我的"
+			}
+		]
+	}
+}

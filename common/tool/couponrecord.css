@@ -1,0 +1,88 @@
+page{
+	background-color: #EEEEEE;
+	padding-top: 0.5rem;
+}
+.ttl_right{
+	display: flex;
+	justify-content: flex-start;
+}
+.couview{
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	background-color: #FFFFFF;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #EEEEEE;
+}
+.fast{
+	margin-left: 0.5rem;
+	color:#999999;
+	height: 1.65rem;
+	line-height: 1.65rem;
+	font-size: 28upx;
+	display: flex;
+	justify-content: space-between;
+	width: 5rem;
+}
+.lightning{
+	color:#999999;
+}
+.cou_del{
+	width:4rem;
+	height:1.65rem;
+	border:1px solid rgba(237,114,31,1);
+	border-radius:0.2rem;
+	font-size: 28upx;
+	color:rgba(237,114,31,1);
+	line-height: 1.65rem;
+	text-align: center;
+	margin-right: 0.5rem;
+}
+.uni-list{
+	background-color: #FFFFFF;
+}
+.labe_list{
+	padding-top: 0.8rem;
+	padding-bottom: 0.8rem;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #EEEEEE;
+}
+.info{
+	width:80%;
+	margin-left:1rem;
+}
+.info view{
+	height: 1.2rem;
+	line-height: 1.2rem;
+	color: #333333;
+	font-size: 28upx;
+}
+.checkview{
+	margin-top: 0.5rem;
+	margin-right: 0.5rem;
+}
+/* #ifdef H5*/
+checkbox .uni-checkbox-input{
+	border-radius: 50%;
+}
+checkbox .uni-checkbox-input.uni-checkbox-input-checked{
+	border:1px solid #ED7A2B;
+	color: #ED7A2B !important;
+}
+checkbox .uni-checkbox-input.uni-checkbox-input-checked::before{
+	
+}
+/* #endif */
+/* #ifdef APP-PLUS || MP-WEIXIN*/
+checkbox .wx-checkbox-input{
+	border-radius: 50%;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+	border:1px solid #ED7A2B;
+	color: #ED7A2B !important;
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+	
+}
+/* #endif */
