@@ -27,7 +27,7 @@
 				<view class="mode_list" v-for="(item,index) in card" :key="index">
 					<view class="alipay">
 						<image src="../../static/zfb.png" mode=""></image>
-						<text>建设银行({{ item.bankCardno.slice(-4) }})</text>
+						<text>建设银行({{ item.bankCardEnd }})</text>
 					</view>
 					<view class="choice" @tap="choice(index)">
 						<image :src="key==index?xz:wxz" mode=""></image>
@@ -43,7 +43,9 @@
 </template>
 
 <script>
+	
 	export default {
+		 
 		data() {
 			return {
 				height: '',
@@ -138,13 +140,12 @@
 				let bankCard = '';
 				if (that.type == 1) {
 					// 支付宝
-					return
 				} else {
 					bankCard = that.card[that.key].bankCardno
 				}
 				if (parseInt(that.money) + brokerage <= that.allmoney) {
 					uni.request({
-						url: this.serveipd + "/api/merchant/money/merchantWithdrawal",
+						url: this.serveipd + "api/merchant/money/merchantWithdrawal",
 						header: {
 							'Content-type': 'application/x-www-form-urlencoded'
 						},
@@ -163,9 +164,9 @@
 									duration: 2000,
 									success() {
 										setTimeout(function() {
-											uni.navigateBack({
-												 delta: 1
-											});
+											uni.switchTab({
+												url:"./index"
+											})
 										}, 2000)
 									}
 								});
@@ -174,6 +175,11 @@
 						fail: () => {},
 						complete: () => {}
 					});
+				}else{
+					uni.showToast({
+						title:"余额不足",
+						icon:"none"
+					})
 				}
 			},
 		}

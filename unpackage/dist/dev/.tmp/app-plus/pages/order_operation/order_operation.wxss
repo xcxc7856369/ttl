@@ -2,7 +2,8 @@ page {
 	background: #fff;
 }
 .navigation text {
-	text-align: left;
+	width: 100%;
+	text-align: center;
 }
 .order_menu{
 	display: -webkit-box;
@@ -24,28 +25,24 @@ page {
 	display: block;
 }
 .order_money{
-	width: 94vw;
-	padding: 25rpx;
+	height:65vh;
 }
 .h3{
-	width: 100%;
 	font-size:32rpx;
 	background: #fff;
 	padding: 25rpx 25rpx;
 }
-page .order_list{
+.order_money .order_list{
 	background: #fff;
-	width: 100%;
-	margin-top: 0;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	padding: 0 20rpx;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
-	padding: 41rpx 0;
 }
 .order_list .head_portrait{
     width: 120rpx;
@@ -339,8 +336,5 @@ scroll-view {
 	-webkit-transform: rotate(0deg);
 	    -ms-transform: rotate(0deg);
 	        transform: rotate(0deg);
-}
-scroll-view{
-	height: 60vh;
 }
 

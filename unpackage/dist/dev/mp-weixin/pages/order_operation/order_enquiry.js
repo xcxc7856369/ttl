@@ -191,12 +191,14 @@ function getDate(type) {
 
       startDate: getDate('start'),
       endDate: getDate('end'),
-      orders: '',
+      order: [],
       merchantId: '',
       tg: true,
       opens: -1,
       height_a: "",
-      display: "" };
+      display: "",
+      page: 1,
+      orderstart: 1 };
 
   },
   onLoad: function onLoad() {
@@ -211,6 +213,15 @@ function getDate(type) {
   },
   onReady: function onReady() {
     this.getTopheight();
+  },
+  // 上拉加载
+  onReachBottom: function onReachBottom() {
+    this.page++;
+    if (this.orderstart == 1) {
+      this.orderDay();
+    } else {
+      this.down_query();
+    }
   },
   methods: {
     getTopheight: function getTopheight() {
@@ -244,21 +255,57 @@ function getDate(type) {
     },
     query: function query() {
       var that = this;
+      that.new_order = 2;
+      that.page = 1;
+      var neworder = [];
+      that.order = [];
+      uni.showLoading();
       uni.request({
         url: this.serveipd + '/api/merchant/order/completedTime',
         method: 'GET',
         data: {
           merchantId: that.merchantId,
-          createTime: that.time },
+          payTime: that.time,
+          page: that.page },
 
         success: function success(res) {
-          console.log(res);
-          that.orders = res.data.data.datas;
-          if (that.orders == []) {
-            that.display == true;
+          uni.hideLoading();
+          neworder = res.data.data;
+          that.order = that.order.concat(neworder);
+          if (that.order.length != 0) {
+            that.display = true;
           } else {
-            that.display == false;
+            that.display = false;
           }
+        },
+        fail: function fail() {},
+        complete: function complete() {} });
+
+    },
+    down_query: function down_query() {
+      var that = this;
+      var enquiryOrder = [];
+      uni.showLoading({});
+
+
+      uni.request({
+        url: this.serveipd + '/api/merchant/order/completedTime',
+        method: 'GET',
+        data: {
+          merchantId: that.merchantId,
+          payTime: that.time,
+          page: that.page },
+
+        success: function success(res) {
+          uni.hideLoading();
+          enquiryOrder = res.data.data;
+          if (enquiryOrder.length == 0) {
+            uni.showToast({
+              title: "没有更多数据了",
+              icon: "none" });
+
+          }
+          that.order = that.order.concat(neworder);
         },
         fail: function fail() {},
         complete: function complete() {} });
@@ -274,15 +321,35 @@ function getDate(type) {
     },
     orderDay: function orderDay() {
       var that = this;
+      var new_order = [];
+      uni.showLoading({});
+
+
       uni.request({
         url: this.serveipd + '/api/merchant/order/orderDay',
         method: 'GET',
         data: {
-          merchantId: that.merchantId },
+          merchantId: that.merchantId,
+          page: that.page },
 
         success: function success(res) {
-          console.log(res);
-          that.orders = res.data.data.datas;
+          uni.hideLoading();
+          new_order = res.data.data;
+          if (new_order.length == 0) {
+            uni.showToast({
+              title: "没有更多数据了",
+              icon: "none" });
+
+            return;
+          }
+          that.order = that.order.concat(new_order);
+          console.log(that.order.length);
+          if (that.order.length != 0) {
+            that.display = true;
+          } else {
+            that.display = false;
+          }
+
         },
         fail: function fail() {},
         complete: function complete() {} });

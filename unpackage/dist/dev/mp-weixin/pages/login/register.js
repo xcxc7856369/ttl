@@ -193,6 +193,13 @@ var _default =
       var reg = /^1[3|4|5|7|8][0-9]{9}$/;
       var phoneNum = that.regis.phone;
       var flag = reg.test(phoneNum);
+      if (that.regis.codeimg == "") {
+        uni.showToast({
+          title: "请输入图形验证码",
+          icon: "none" });
+
+        return;
+      }
       if (flag) {
         uni.request({
           url: that.regis.yanzhengma,
@@ -204,7 +211,7 @@ var _default =
 
           success: function success(res) {
             that.regis.smscodes = res.data.data;
-            var currentTime = 60;
+            var currentTime = 5;
             that.regis.now = currentTime + '秒';
             that.regis.butDis = true;
             console.log(res.data.data);

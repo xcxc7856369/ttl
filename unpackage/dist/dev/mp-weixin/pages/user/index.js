@@ -254,6 +254,7 @@ var _default =
 
         success: function success(res) {
           that.gross_income = res.data.data;
+          console.log(that.gross_income);
 
         },
         fail: function fail() {},

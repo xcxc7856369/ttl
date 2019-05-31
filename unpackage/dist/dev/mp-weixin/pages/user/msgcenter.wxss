@@ -9,8 +9,7 @@ page {
 }
 .info {
 		width: 100%;
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+		margin-top: 20rpx;
 		background-color: #FFFFFF;
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -36,7 +35,11 @@ page {
 }
 .info .notice{
 		margin-left: 20rpx;
-		width: 88vw;
+		width:100%;
+}
+.info .active{
+		margin-left: 20rpx;
+		width:88%;
 }
 .info_top {
 		display: -webkit-box;
@@ -49,7 +52,7 @@ page {
 		        justify-content: space-between;
 		height: 2rem;
 		line-height: 2rem;
-		width: 90%;
+		width: 100%;
 }
 .info_title {
 		width: 50%;
@@ -80,6 +83,7 @@ page {
 		font-size: 21rpx;
 		color: #999999;
 		text-align: right;
+		margin-right: 20rpx;
 }
 .info_state {
 		width: 90%;
@@ -88,5 +92,25 @@ page {
 		font-weight: 400;
 		color: rgba(51, 51, 51, 1);
 		line-height: 2rem;
+}
+.bottom {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 100rpx;
+	border-top: 1px solid #d9d9d9;
+	background: #fff;
+}
+.allElection,.del{
+	display: inline-block;
+	font-size: 26rpx;
+	width: 49%;
+	height:100rpx;
+	line-height:100rpx;
+	text-align: center;
+}
+.del{
+	color:red;
+	border-left: 1px solid #d9d9d9;
 }
 

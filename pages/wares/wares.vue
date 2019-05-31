@@ -3,7 +3,7 @@
 		<!-- 头部导航 -->
 		<view class='navigation' :style="{height:height}">
 			<view class="left"></view>
-			<view class="title">鲁西肥牛</view>
+			<view class="title">{{ shopname }}</view>
 			<navigator class="add_wares right" url="add_wares" hover-class="none">
 				<image src="../../static/tj.png" mode=""></image>
 			</navigator>
@@ -13,9 +13,9 @@
 				<view class="title" @tap='open' :class="{tab_active:KG}"><text>全部分类</text>
 					<image :src="KG?up:dow" mode=""></image>
 				</view>
-				<view class="list" :class="{active:KG}">
+				<scroll-view class="list" :class="{active:KG}" scroll-y="true" style="height:400upx">
 					<view v-for="(item,index) in allCategories" :key="item.id" @tap="getCommodity(item.id)">{{ item.name }}</view>
-				</view>
+				</scroll-view>
 			</view>
 			<view class="sort">
 				<view class="title" @tap='open_screen' :class="{tab_active:KG_sc}"><text>筛选</text>
@@ -62,17 +62,28 @@
 				dow: '../../static/x.png',
 				up: '../../static/s.png',
 				key:-1,
+				page:1,
+				shopname:'',
 			}
 		},
 		onLoad() {
+	
+		},
+		onShow() {
 			let that = this;
 			uni.getStorage({
 				key: 'userinfo',
 				success(e) {
 					that.merchantId = e.data.id;
+					that.shopname=e.data.name;
 					that.getSort();
 				}
 			});
+		},
+		// 上拉加载
+		onReachBottom() {
+			this.page++;
+			this.downCommodity();
 		},
 		onReady() {
 			this.getTopheight();
@@ -97,6 +108,7 @@
 			},
 			getSort: function() {
 				let that = this;
+				that.allCategories=[];
 				uni.request({
 					url: this.serveipd + '/api/merchantApi/allCategories',
 					method: 'GET',
@@ -104,6 +116,7 @@
 						merchantId: that.merchantId,
 					},
 					success: res => {
+						console.log(res);
 						for (let i = 0; i < res.data.data.length; i++) {
 							that.allCategories.push(res.data.data[i])
 						}
@@ -116,6 +129,9 @@
 				this.KG = !this.KG;
 				let that = this;
 				that.id = category_id;
+				that.page=1;
+				that.commodities=[];
+				uni.showLoading();
 				uni.request({
 					url: this.serveipd + "/api/merchantApi/classified",
 					method: "GET",
@@ -124,12 +140,37 @@
 						category_id: category_id
 					},
 					success(res) {
-						console.log(res);
+						console.log(res)
+						uni.hideLoading();
 						let list = [];
-						for (let i = 0; i < res.data.data.length; i++) {
-							list.push(res.data.data[i]);
+						list=res.data.data.datas;
+						that.commodities=(that.commodities.concat(list));
+					}
+				})
+			},
+			downCommodity: function() {
+				let that = this;
+				uni.showLoading();
+				uni.request({
+					url: this.serveipd + "/api/merchantApi/classified",
+					method: "GET",
+					data: {
+						merchantId: that.merchantId,
+						category_id: that.id,
+						page:that.page
+					},
+					success(res) {
+						console.log(res);
+						uni.hideLoading();
+						let list = [];
+						list=res.data.data.datas;
+						if(list.length==0){
+							uni.showToast({
+								title:"没有更多数据",
+								icon:"none"
+							})
 						}
-						that.commodities = list;
+					    that.commodities=that.commodities.concat(list);
 					}
 				})
 			},

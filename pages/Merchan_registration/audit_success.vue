@@ -6,7 +6,7 @@
 	</view>
 		<image src="../../static/Merchan_registration/img.png" mode=""></image>
 		<text class="h1">提交审核成功</text>
-		<text class="p">入主申请提交成功，工作人员会尽快</text>
+		<text class="p">入驻申请提交成功，工作人员会尽快</text>
 		<text class="p">和您取得联系，请耐心等待</text>
 	</view>
 </template>

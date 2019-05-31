@@ -6,15 +6,6 @@
     "support": true,
     "color": "#ff3333",
     "height": "10%",
-    "offset": "20%",
-    "contentdown": {
-      "caption": "下拉可刷新自定义文本"
-    },
-    "contentover": {
-      "caption": "释放可刷新自定义文本"
-    },
-    "contentrefresh": {
-      "caption": "正在刷新自定义文本"
-    }
+    "offset": "20%"
   }
 }

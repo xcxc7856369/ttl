@@ -2,7 +2,8 @@ page {
 	background: #fff;
 }
 .navigation text {
-	text-align: left;
+	width: 100%;
+	text-align: center;
 }
 .order_menu{
 	display: flex;
@@ -19,22 +20,18 @@ page {
 	display: block;
 }
 .order_money{
-	width: 94vw;
-	padding: 25upx;
+	height:65vh;
 }
 .h3{
-	width: 100%;
 	font-size:32upx;
 	background: #fff;
 	padding: 25upx 25upx;
 }
-page .order_list{
+.order_money .order_list{
 	background: #fff;
-	width: 100%;
-	margin-top: 0;
 	display: flex;
+	padding: 0 20upx;
 	justify-content: space-between;
-	padding: 41upx 0;
 }
 .order_list .head_portrait{
     width: 120upx;

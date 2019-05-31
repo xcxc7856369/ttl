@@ -8,7 +8,7 @@
 			<view class="content" :style="{paddingTop:height}">
 				<image src="../../static/Merchan_registration/in_audit.png" mode=""></image>
 				<text class="h1">审核中</text>
-				<text class="p">入主申请提交成功，工作人员会尽快</text>
+				<text class="p">入驻申请提交成功，工作人员会尽快</text>
 				<text class="p">和您取得联系，请耐心等待</text>
 			</view>
 	</view>

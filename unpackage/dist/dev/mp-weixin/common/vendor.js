@@ -15,7 +15,8 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ "../../../Doc
 _vue.default.config.productionTip = false;
 
 _App.default.mpType = 'app';
-_vue.default.prototype.serveipd = "http://192.168.0.206:6969/wroot_ck_war_exploded";
+// Vue.prototype.serveipd="http://www.tangtangluosc.cn/ttl";
+_vue.default.prototype.serveipd = "http://192.168.0.198:6789/wroot_ck_war_exploded/";
 var hei;
 uni.getSystemInfo({
   success: function success(res) {

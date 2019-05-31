@@ -2,7 +2,7 @@
 	<view>
 		<!-- 头部导航 -->
 		<view class='navigation' :style="{height:height}">
-			<text>鲁西肥牛</text>
+			<text>{{ shopname }}</text>
 		</view>
 		<!-- TAB切换 -->
 		<view class="content" :style="{paddingTop:height}">
@@ -147,10 +147,12 @@
 				tg: true,
 				opens: -1,
 				merchantId: '',
-				wait_orders: '',
+				wait_orders: [],
 				newOrders_page: 1,
 				wait_delivery_page: 1,
 				nomore: true,
+				index: '',
+				shopname:'',
 
 			}
 		},
@@ -160,9 +162,10 @@
 				key: 'userinfo',
 				success(e) {
 					that.merchantId = e.data.id;
-					that.load_newOrders();
-					that.wait_delivery();
-					that.reminder();
+					that.shopname=e.data.name;
+					that.down_newOrders();
+					that.down_delivery();
+					// that.reminder();
 				}
 			});
 		},
@@ -172,18 +175,23 @@
 		onShow() {},
 		// 下拉刷新
 		onPullDownRefresh() {
-			this.load_newOrders();
-			this.wait_delivery_page();
+			if (this.index == 0) {
+				this.down_newOrders();
+			} else if (this.index == 1) {
+				this.down_delivery();
+			}
+
 			setTimeout(function() {
 				uni.stopPullDownRefresh();
 			}, 1000);
 		},
 		// 上拉加载
 		onReachBottom() {
-			if (this.nomore) {
+			if (this.index == 0) {
 				this.newOrders_page++;
-				this.wait_delivery_page++;
 				this.load_newOrders();
+			} else if (this.index == 1) {
+				this.wait_delivery_page++;
 				this.wait_delivery();
 			}
 
@@ -199,46 +207,60 @@
 				})
 			},
 			onTap: function(index) {
+				this.index = index;
 				if (this.current != index) {
 					this.current = index;
+					this.$forceUpdate();
 				};
-				if (index == 0) {
-					this.load_newOrders()
-				};
-				if (index == 1) {
-					this.wait_delivery()
-					this.wait_delivery_page = 1;
-				};
+
 			},
 			// 生成新订单
 			load_newOrders: function() {
 				let that = this;
+				uni.showLoading();
 				uni.request({
 					url: this.serveipd + '/api/merchant/order/newOrders',
 					method: 'GET',
 					data: {
 						merchantId: that.merchantId,
-						page: that.newOrders_page
+						page: that.newOrders_page,
 					},
 					success: res => {
-						console.log(res.data.data)
+						uni.hideLoading();
+						let neworder = []
+						neworder = res.data.data;
+						that.orders = that.orders.concat(neworder);
 						if (res.data.data.length == 0) {
-							that.nomore = false;
 							uni.showToast({
 								title: "没有更多数据了",
 								icon: 'none'
 							});
 							return
 						}
-						that.orders = that.orders.concat(res.data.data);
 					},
 					fail: () => {},
 					complete: () => {}
 				});
 			},
-			//待配送列表
-			wait_delivery: function() {
-				let that = this;
+			// 新订单下拉刷新
+			down_newOrders: function() {
+				let that=this
+				uni.request({
+					url: that.serveipd + '/api/merchant/order/newOrders',
+					method: 'GET',
+					data: {
+						merchantId: that.merchantId,
+					},
+					success: res => {
+						that.orders = res.data.data;
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			},
+			// 待配送下拉刷新
+			down_delivery: function() {
+				let that=this
 				uni.request({
 					url: that.serveipd + '/api/merchant/order/delivery',
 					method: 'GET',
@@ -247,6 +269,35 @@
 					},
 					success: res => {
 						that.wait_orders = res.data.data;
+					},
+					fail: () => {},
+					complete: () => {}
+				});
+			},
+			//待配送列表
+			wait_delivery: function() {
+				let that = this;
+				uni.showLoading();
+				uni.request({
+					url: that.serveipd + '/api/merchant/order/delivery',
+					method: 'GET',
+					data: {
+						merchantId: that.merchantId,
+						page: that.wait_delivery_page
+					},
+					success: res => {
+						uni.hideLoading();
+						let waitorder = []
+						waitorder = res.data.data;
+						that.wait_orders = that.wait_orders.concat(waitorder);
+						console.log(res);
+						if (res.data.data.length == 0) {
+							uni.showToast({
+								title: "没有更多数据了",
+								icon: 'none'
+							});
+							return
+						}
 					},
 					fail: () => {},
 					complete: () => {}
@@ -287,7 +338,7 @@
 					this.opens = -1;
 				}
 			},
-			// 立即接收
+			// 立即接单
 			receive: function(orderno) {
 				let that = this;
 				uni.request({
@@ -302,8 +353,7 @@
 							title: res.data.msg,
 							duration: 2000
 						});
-						that.load_newOrders();
-						that.wait_delivery();
+						that.down_newOrders();
 					}
 				});
 			},
@@ -321,7 +371,7 @@
 							title: res.data.msg,
 							duration: 2000
 						});
-						that.wait_delivery();
+						that.down_delivery();
 					}
 				});
 			},

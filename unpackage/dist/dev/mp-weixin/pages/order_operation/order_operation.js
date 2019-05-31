@@ -145,7 +145,8 @@ var _default =
       "我的"],
 
       merchantId: '',
-      orders: '' };
+      orders: '',
+      shopname: '' };
 
   },
   onLoad: function onLoad() {
@@ -154,6 +155,7 @@ var _default =
       key: 'userinfo',
       success: function success(e) {
         that.merchantId = e.data.id;
+        that.shopname = e.data.name;
         that.Record();
       } });
 

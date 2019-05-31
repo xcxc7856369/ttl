@@ -118,9 +118,9 @@
 							duration: 2000,
 							success() {
 								setTimeout(function() {
-									uni.navigateBack({
-										data: 1,
-									});
+									uni.navigateTo({
+										url:"./refund"
+									})
 								}, 2000);
 
 							}
@@ -156,9 +156,9 @@
 							duration: 2000,
 							success() {
 								setTimeout(function() {
-									uni.navigateBack({
-										data: 1,
-									});
+										uni.navigateTo({
+										url:"./refund"
+									})
 								}, 2000);
 
 							}

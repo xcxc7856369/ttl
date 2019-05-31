@@ -96,6 +96,8 @@ vertical-align: middle;
 	margin-top: 2vw;
 }
 .wares_infor{
+	width: 100%;
+	position: relative;
 	margin-left: 20rpx;
 }
 .wares_infor>text{
@@ -120,17 +122,18 @@ vertical-align: middle;
 	padding-top: 40rpx;
 }
 .wares_box .wares_list .down {
+	display: block;
 	position: absolute;
 	bottom: 20rpx;
 	right: 6vw;
 	border-radius: 1vw;
-	padding: 1vw 2vw;
-	width: 120rpx;
-	height: 50rpx;
+	height:60rpx !important;
+	line-height: 50rpx !important;
+	padding: 1vw 2vw !important;
+	width: 120rpx !important;
 	background: #ED721F;
 	color:#fff;
 	text-align: center;
-	line-height: 50rpx;
 	font-size: 26rpx;
 }
 .tabBar {
@@ -149,5 +152,8 @@ vertical-align: middle;
 }
 .tab_active{
 	 color:#ED721F;
+}
+.off_shelf{
+	 background: #D2D2D2 !important;
 }
 

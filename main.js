@@ -4,7 +4,8 @@ import App from './App'
 Vue.config.productionTip = false
 
 App.mpType = 'app';
-Vue.prototype.serveipd="http://192.168.0.206:6969/wroot_ck_war_exploded";
+// Vue.prototype.serveipd="http://www.tangtangluosc.cn/ttl";
+Vue.prototype.serveipd="http://192.168.0.198:6789/wroot_ck_war_exploded/";
 let hei;
 uni.getSystemInfo({
 	success: function(res) {

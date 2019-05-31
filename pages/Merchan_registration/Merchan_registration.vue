@@ -61,19 +61,19 @@
 					<view class="div category">
 						<text>经营品类</text>
 						<picker mode="selector" :value="index" :range="category" @change="categoryColumn" style="display: inline-block;">
-							<input confirmtype="text" placeholder="请选择" v-model="pickerProducts">
+							<text class="cat_text">{{pickerProducts}}</text>
 							<!-- 	<view>{{category[0][index[0]]}},{{ category[1][index[1]]}}</view> -->
 						</picker>
 					</view>
 					<view class="div">
 						<text>门店区域</text>
 						<picker mode="multiSelector" :value="multiIndex" :range="citylist" @columnchange="showCityData" style="display: inline-block;">
-							<input confirmtype="text" placeholder="请选择" @tap="showCityData" v-model="citytext">
+							<text class=" cat_text" @tap="showCityData">{{ citytext }}</text>
 						</picker>
 					</view>
-					<view class="div">
+					<view class="div address">
 						<text>门店地址</text>
-						<input confirmtype="text" value="" placeholder="请输入门店地址" v-model="store_address_1" />
+						<text @tap="getaddress" class="getaddress">{{ store_address_1 }}</text>
 					</view>
 					<view class="div div_photo">
 						<text>门头近景和远景</text>
@@ -99,6 +99,7 @@
 							<image @tap="add_trademark" :src="shop.trademark" mode=""></image>
 						</view>
 					</view>
+
 				</view>
 				<button class='step_next' confirmtype="primary" @tap='shop_step_next'>下一步</button>
 			</view>
@@ -136,7 +137,6 @@
 						<picker mode="date" :value="date" :start="startDate" :end="endDate" @change="register_time">
 							<input confirmtype="text" :class="{error:qua. register_error }" value="" placeholder="请输入注册时间" v-model="qua.register_time" />
 						</picker>
-
 					</view>
 					<view class="div">
 						<input confirmtype="text" :class="{error:qua.mechanism_error}" value="" placeholder="请输入发证/登记机关" v-model="qua.mechanism" />
@@ -246,7 +246,7 @@
 		let day = date.getDate();
 
 		if (confirmtype === 'start') {
-			year = year - 100;
+			year = year-100;
 		} else if (confirmtype === 'end') {
 			year = year + 100;
 		}
@@ -258,6 +258,8 @@
 	export default {
 		data() {
 			return {
+				latitude: '',
+				longitude: '',
 				top: '',
 				underline1: "2px solid #E33E09",
 				underline2: "",
@@ -268,7 +270,7 @@
 				areaId: '',
 				id: '',
 				cityData: '',
-				citytext: '',
+				citytext: '请选择',
 				citylist: [
 					[],
 					[],
@@ -289,7 +291,7 @@
 				next3: "#DDDDDD",
 				shop_color: "#DDDDDD",
 				orange: "#E33D09",
-				store_address_1: '',
+				store_address_1: '请输入门店地址',
 				multiIndex: [0, 0, 0],
 				date: getDate({
 					format: true
@@ -301,7 +303,7 @@
 				enterprise_name: '',
 				user_name: '',
 				phone_number: '',
-				ordercall:'',
+				ordercall: '',
 				img_number: '',
 				verification_code: '',
 				error: {
@@ -309,12 +311,12 @@
 				},
 				user_error: false,
 				phone_error: false,
-				order_error:false,
+				order_error: false,
 				enterprise_error: false,
 				img_error: false,
 				code_error: false,
 				pickerText: '',
-				pickerProducts: '',
+				pickerProducts: '请选择',
 				mode: '',
 				deepLength: 1,
 				pickerValueDefault: [0],
@@ -427,6 +429,18 @@
 			this.getCityData();
 		},
 		methods: {
+			// 获取当前地址
+			getaddress: function() {
+				let that = this;
+				uni.chooseLocation({
+					success(e) {
+						console.log(e.latitude)
+						that.store_address_1 = e.address;
+						that.latitude = e.latitude;
+						that.longitude = e.longitude;
+					}
+				});
+			},
 			getTopheight: function() {
 				let that = this;
 				uni.getSystemInfo({
@@ -531,6 +545,7 @@
 			},
 			// 下一步
 			basic_step_next: function() {
+				this.step_next = -100;
 				var that = this;
 				let reg_name = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
 				let reg_phone = /^1[34578]\d{9}$/;
@@ -676,8 +691,9 @@
 								uni.showToast({
 									title: '发送短信验证码失败',
 									icon: "none",
-									duration: F2000
+									duration: 2000
 								});
+							that.yanzheng();
 							return false;
 						};
 						if (res.data.code == 706) {
@@ -687,6 +703,7 @@
 									icon: "none",
 									duration: 2000
 								});
+							that.yanzheng();
 							return false;
 						};
 						if (res.data.code == 705) {
@@ -696,6 +713,7 @@
 									icon: "none",
 									duration: 2000
 								});
+							that.yanzheng();
 							return false;
 						};
 					},
@@ -718,43 +736,68 @@
 			// 近景远景
 			add_near: function() {
 				var that = this;
+				if (that.mendianlist.length >= 2) {
+					uni.showToast({
+						title: "最多只能选两张",
+						icon: 'none'
+					})
+					return
+				}
 				uni.chooseImage({
-					count: 2, //默认9
+					count: 2 - that.mendianlist.length, //默认9
 					sizeconfirmtype: ['original', 'compressed'],
 					success: (res) => {
-						const url = res.tempFiles;
-						that.mendianlist.push(url[0].path);
-						uni.uploadFile({
-							url: that.serveipd + "/ajax/upfile", //仅为示例，非真实的接口地址
-							filePath: url[0].path,
-							name: 'upfile',
-							formData: {},
-							success: (uploadFileRes) => {
-								that.mendian.push(JSON.parse(uploadFileRes.data).id);
-							}
-						});
+						let url = res.tempFiles;
+						for (let i = 0; i < url.length; i++) {
+							that.mendianlist.push(url[i].path);
+						}
+						for (let i = 0; i < url.length; i++) {
+							uni.uploadFile({
+								url: that.serveipd + "/ajax/upfile", //仅为示例，非真实的接口地址
+								filePath: url[i].path,
+								name: 'upfile',
+								formData: {},
+								success: (uploadFileRes) => {
+									that.mendian.push(JSON.parse(uploadFileRes.data).id);
+								}
+							});
+						}
+
 					}
 				});
 			},
 			// 店内环境
 			add_inside: function() {
 				var that = this;
+				if (that.outPiclist.length >= 2) {
+					uni.showToast({
+						title: "最多只能选两张",
+						icon: 'none'
+					})
+					return
+				}
 				uni.chooseImage({
-					count: 1, //默认9
+					count: 2 - that.outPiclist.length, //默认9
 					sizeconfirmtype: ['original', 'compressed'],
 					success: (res) => {
-						const url = res.tempFiles;
-						that.outPiclist.push(url[0].path);
-						uni.uploadFile({
-							url: that.serveipd + "/ajax/upfile", //仅为示例，非真实的接口地址
-							filePath: url[0].path,
-							name: 'upfile',
-							formData: {},
-							success: (uploadFileRes) => {
-								that.outPic.push(JSON.parse(uploadFileRes.data).id);
-								console.log(that.outPic);
-							}
-						});
+						let url = res.tempFiles;
+						for (let i = 0; i < url.length; i++) {
+							that.outPiclist.push(url[i].path);
+						}
+						for (let i = 0; i < url.length; i++) {
+							uni.uploadFile({
+								url: that.serveipd + "/ajax/upfile", //仅为示例，非真实的接口地址
+								filePath: url[i].path,
+								name: 'upfile',
+								formData: {},
+								success: (uploadFileRes) => {
+									console.log(uploadFileRes);
+									that.outPic.push(JSON.parse(uploadFileRes.data).id);
+									console.log(that.outPic);
+								}
+							});
+						}
+
 					}
 				});
 			},
@@ -868,7 +911,9 @@
 			},
 
 			// 门店信息  下一步
+
 			shop_step_next: function() {
+				this.step_next = -200;
 				if (this.pickerProducts == "") {
 					uni.showToast({
 						title: '请选择经营品类',
@@ -887,7 +932,7 @@
 					});
 					return;
 				}
-				if (this.store_address_1 == "") {
+				if (this.store_address_1 == "请输入门店地址") {
 					uni.showToast({
 						title: '请输入门店地址',
 						icon: "none",
@@ -1450,7 +1495,7 @@
 						name: that.enterprise_name,
 						contactName: that.user_name,
 						mobile: that.phone_number,
-						singleLineTel:that.ordercall,
+						singleLineTel: that.ordercall,
 						shopAddress: that.store_address_1,
 						inPic: that.mendian.toString(),
 						interiorpics: that.outPiclist.toString(),
@@ -1486,6 +1531,8 @@
 						provinceId: that.provinceId,
 						cityId: that.cityId,
 						areaId: that.areaId,
+						longitude:that.longitude,
+						latitude:that.latitude
 					},
 					success: res => {
 						uni.hideLoading();

@@ -161,18 +161,29 @@ var _default =
       id: '',
       dow: '../../static/x.png',
       up: '../../static/s.png',
-      key: -1 };
+      key: -1,
+      page: 1,
+      shopname: '' };
 
   },
   onLoad: function onLoad() {
+
+  },
+  onShow: function onShow() {
     var that = this;
     uni.getStorage({
       key: 'userinfo',
       success: function success(e) {
         that.merchantId = e.data.id;
+        that.shopname = e.data.name;
         that.getSort();
       } });
 
+  },
+  // 上拉加载
+  onReachBottom: function onReachBottom() {
+    this.page++;
+    this.downCommodity();
   },
   onReady: function onReady() {
     this.getTopheight();
@@ -197,6 +208,7 @@ var _default =
     },
     getSort: function getSort() {
       var that = this;
+      that.allCategories = [];
       uni.request({
         url: this.serveipd + '/api/merchantApi/allCategories',
         method: 'GET',
@@ -204,6 +216,7 @@ var _default =
           merchantId: that.merchantId },
 
         success: function success(res) {
+          console.log(res);
           for (var i = 0; i < res.data.data.length; i++) {
             that.allCategories.push(res.data.data[i]);
           }
@@ -216,6 +229,9 @@ var _default =
       this.KG = !this.KG;
       var that = this;
       that.id = category_id;
+      that.page = 1;
+      that.commodities = [];
+      uni.showLoading();
       uni.request({
         url: this.serveipd + "/api/merchantApi/classified",
         method: "GET",
@@ -225,11 +241,36 @@ var _default =
 
         success: function success(res) {
           console.log(res);
+          uni.hideLoading();
           var list = [];
-          for (var i = 0; i < res.data.data.length; i++) {
-            list.push(res.data.data[i]);
+          list = res.data.data.datas;
+          that.commodities = that.commodities.concat(list);
+        } });
+
+    },
+    downCommodity: function downCommodity() {
+      var that = this;
+      uni.showLoading();
+      uni.request({
+        url: this.serveipd + "/api/merchantApi/classified",
+        method: "GET",
+        data: {
+          merchantId: that.merchantId,
+          category_id: that.id,
+          page: that.page },
+
+        success: function success(res) {
+          console.log(res);
+          uni.hideLoading();
+          var list = [];
+          list = res.data.data.datas;
+          if (list.length == 0) {
+            uni.showToast({
+              title: "没有更多数据",
+              icon: "none" });
+
           }
-          that.commodities = list;
+          that.commodities = that.commodities.concat(list);
         } });
 
     },

@@ -382,6 +382,9 @@ var _default =
               title: "添加成功",
               duration: 2000 });
 
+            // uni.switchTab({
+            // 	url:"/pages/wares/wares"
+            // })
           } else {
             uni.showToast({
               title: "添加失败",

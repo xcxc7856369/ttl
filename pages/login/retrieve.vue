@@ -90,7 +90,7 @@
 				var reg = /^1[3|4|5|7|8][0-9]{9}$/; 
 				var phoneNum = that.regis.phone;
 				var flag = reg.test(phoneNum); 
-				if(flag){
+			    if(flag){
 					uni.request({
 						url: that.regis.yanzhengma, 
 						method: 'GET',

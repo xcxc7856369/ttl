@@ -7,7 +7,7 @@
 			</navigator>
 			<view class="title">订单统计</view>
 			<view class="right"></view>
-		</view>	
+		</view>
 		<view class="segmented" :style="{top:height}">
 			<view class="tab_list" v-for="(item,index) in items" @tap="onTap(index)" :key="index" :class="{active:current===index}">
 				{{ item }}
@@ -113,11 +113,14 @@
 				items: ["今日订单", "历史订单"],
 				current: 0,
 				merchantId: '',
-				orders: '',
+				orders: [],
 				opens: -1,
 				tg: true,
 				height_a: "1px",
-				orderDays: "",
+				orderDays: [],
+				index: 0,
+				page: 1,
+				histor_page:1,
 			}
 		},
 		onLoad() {
@@ -130,6 +133,16 @@
 					that.orderDay();
 				}
 			});
+		},
+		// 上拉加载
+		onReachBottom() {
+			if (this.index == 0) {
+				this.page++;
+				this.orderDay();
+			} else if (this.index == 1) {
+				this.histor_page++;
+				this.historical_order();
+			}
 		},
 		onReady() {
 			this.getTopheight();
@@ -145,20 +158,36 @@
 				})
 			},
 			onTap: function(index) {
+				this.index = index;
 				if (this.current != index) {
 					this.current = index;
 				};
 			},
 			historical_order: function() {
 				let that = this;
+				let neworder = [];
+				uni.showLoading({
+					
+				});
 				uni.request({
 					url: this.serveipd + '/api/merchant/order/orderStatistics',
 					method: 'GET',
 					data: {
 						merchantId: that.merchantId,
+						page: that.histor_page
 					},
 					success: res => {
-						this.orders = res.data.data.datas;
+						uni.hideLoading();
+						neworder = res.data.data;
+						console.log(neworder)
+						if (neworder.length == 0) {
+							uni.showToast({
+								title: '没有更多数据',
+								icon: 'none'
+							});
+							return
+						}
+						that.orders = that.orders.concat(neworder);
 					},
 					fail: () => {},
 					complete: () => {}
@@ -166,15 +195,28 @@
 			},
 			orderDay: function() {
 				let that = this;
+				let neworder = [];
+				uni.showLoading({
+					
+				});
 				uni.request({
 					url: this.serveipd + '/api/merchant/order/orderDay',
 					method: 'GET',
 					data: {
 						merchantId: that.merchantId,
+						page: that.page
 					},
 					success: res => {
-						console.log(res);
-						that.orderDays = res.data.data.datas;
+						uni.hideLoading();
+						neworder = res.data.data;
+						if (neworder.length == 0) {
+							uni.showToast({
+								title: '没有更多数据',
+								icon: 'none'
+							});
+							return
+						}
+						that.orderDays = that.orderDays.concat(neworder);
 					},
 					fail: () => {},
 					complete: () => {}

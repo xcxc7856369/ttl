@@ -79,6 +79,9 @@
 		methods:{
 			getinfo:function(){
 				let that=this;
+				uni.showLoading({
+					
+				})
 				uni.request({
 					url: this.serveipd+'/api/merchant/comment/comments',
 					method: 'GET',
@@ -86,6 +89,7 @@
 						merchantId:that.id
 					},
 					success: res => {
+						uni.hideLoading()
 						that.infor=res.data.data.datas;
 						console.log(that.infor);
 					},

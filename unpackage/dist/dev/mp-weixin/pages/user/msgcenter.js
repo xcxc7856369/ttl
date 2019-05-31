@@ -134,12 +134,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       windowHeight: '',
-      checkoff: false };
+      checkoff: false,
+      id: "",
+      infor: [],
+      nowtime: '',
+      arr: [],
+      xz: "../../static/user/xz.png",
+      wxz: "../../static/user/wxz.png" };
 
   },
   onLoad: function onLoad() {
@@ -163,17 +174,68 @@ var _default =
     getinfo: function getinfo() {
       var that = this;
       uni.request({
-        url: that.serveipd + "",
+        url: that.serveipd + "/api/merchant/auth/selectMessageList",
         method: 'GET',
-        data: {},
-        success: function success(res) {},
+        data: {
+          merchantId: that.id },
+
+        success: function success(res) {
+          that.infor = res.data.data;
+          console.log(res);
+        },
         fail: function fail() {},
         complete: function complete() {} });
 
-
+      var time = new Date();
+      var y = time.getFullYear();
+      var m = time.getMonth() + 1;
+      var d = time.getDate();
+      if (m < 10) {
+        m = "0" + m;
+      };
+      if (d < 10) {
+        d = "0" + d;
+      }
+      that.nowtime = y + "-" + m + "-" + d;
+      console.log(that.nowtime);
     },
-    edit: function edit() {
-      this.checkoff = true;
+    check_box: function check_box(id) {
+      console.log(id);
+      var a = this.arr.indexOf(id);
+      if (a != -1) {
+        this.arr.splice(this.arr.indexOf(id), 1);
+      } else {
+        this.arr.push(id);
+      }
+    },
+    allElection: function allElection() {
+      if (this.arr.length == this.infor.length) {
+        this.arr = [];
+      } else {
+        this.arr = [];
+        for (var i = 0; i < this.infor.length; i++) {
+          this.arr.push(this.infor[i].id);
+        }
+      }
+    },
+    del: function del(e) {
+      var that = this;
+      uni.request({
+        url: that.serveipd + "api/merchant/auth/deleteMessageList",
+        // header: {
+        // 	'Content-type': 'application/x-www-form-urlencoded'
+        // },
+        method: "POST",
+        data: {
+          ids: that.arr },
+
+        success: function success(res) {
+          if (res.code == 0) {
+            that.getinfo();
+          }
+        } });
+
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ "./node_modules/@dcloudio/uni-mp-weixin/dist/index.js")["default"]))
 
@@ -205,6 +267,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var l0 = _vm.infor.map(function(item, index) {
+    var g0 = _vm.arr.indexOf(item.id)
+    var g1 = item.creatTime.slice(0, 10)
+    var g2 = item.creatTime.slice(-8)
+    var g3 = item.creatTime.slice(0, 10)
+    return {
+      $orig: _vm.__get_orig(item),
+      g0: g0,
+      g1: g1,
+      g2: g2,
+      g3: g3
+    }
+  })
+
+  if (!_vm._isMounted) {
+    _vm.e0 = function($event) {
+      _vm.checkoff = !_vm.checkoff
+    }
+  }
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        l0: l0
+      }
+    }
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

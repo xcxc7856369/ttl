@@ -24,7 +24,7 @@
 		</view>
 		<view class="profit">
 			<view class="profit_info">
-				<view class="profit_info_one">{{gross_income}}</view>
+				<view class="profit_info_one">{{ gross_income==0?0:gross_income }}</view>
 				<view class="profit_info_two">累计收入</view>
 			</view>
 			<view class="profit_info">
@@ -78,7 +78,7 @@
 		</view>
 		<view class="tool">
 			<view class="tool_info">
-				<navigator url="../tool/paycode">
+				<navigator url="../tool/paycode" hover-class="none">
 					<view class="tool_img">
 						<image src="../../static/user/index/skm.png" mode=""></image>
 					</view>
@@ -86,7 +86,7 @@
 				</navigator>
 			</view>
 			<view class="tool_info">
-				<navigator url="../tool/voucher">
+				<navigator url="../tool/voucher" hover-class="none">
 					<view class="tool_img">
 						<image src="../../static/user/index/yq.png" mode=""></image>
 					</view>
@@ -94,7 +94,7 @@
 				</navigator>
 			</view>
 			<view class="tool_info">
-				<navigator url="../wares/add_wares">
+				<navigator url="../wares/add_wares" hover-class="none">
 					<view class="tool_img">
 						<image src="../../static/user/index/sptj.png" mode=""></image>
 					</view>
@@ -154,6 +154,7 @@
 					},
 					success: res => {
 					that.gross_income=res.data.data;
+					console.log(that.gross_income)
 					
 					},
 					fail: () => {},

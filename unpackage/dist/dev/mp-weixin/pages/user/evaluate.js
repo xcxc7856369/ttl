@@ -179,6 +179,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getinfo: function getinfo() {
       var that = this;
+      uni.showLoading({});
+
+
       uni.request({
         url: this.serveipd + '/api/merchant/comment/comments',
         method: 'GET',
@@ -186,6 +189,7 @@ __webpack_require__.r(__webpack_exports__);
           merchantId: that.id },
 
         success: function success(res) {
+          uni.hideLoading();
           that.infor = res.data.data.datas;
           console.log(that.infor);
         },

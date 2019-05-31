@@ -44,18 +44,22 @@
 			}
 		},
 		created() {
-			var that=this;
+			var that = this;
 			uni.getStorage({
 				key: 'userinfo',
 				success(res) {
+					console.log(res);
+					that.denglu.phone=res.data.mobile;
+					that.denglu.password=res.data.password;
+					that.login_tap();
 					uni.request({
-						url:that.serveipd+"/api/merchant/auth/approval",
+						url: that.serveipd + "/api/merchant/auth/approval",
 						method: 'POST',
 						header: {
-						'content-type': 'application/x-www-form-urlencoded',
-					     },
-						data:{
-							customerId:res.data.userid,
+							'content-type': 'application/x-www-form-urlencoded',
+						},
+						data: {
+							customerId: res.data.userid,
 						},
 						success(e) {
 							if (e.data.data.status == 1) {
@@ -73,7 +77,7 @@
 							};
 							if (e.data.data.status == 3) {
 								uni.navigateTo({
-									url: '/pages/Merchan_registration/not_pass?id='+res.data.userid,
+									url: '/pages/Merchan_registration/not_pass?id=' + res.data.userid,
 									success: res => {},
 									fail: () => {},
 									complete: () => {}
@@ -86,7 +90,7 @@
 									fail: () => {},
 									complete: () => {}
 								});
-							};	
+							};
 						}
 					})
 				}
@@ -126,7 +130,7 @@
 						password: that.denglu.password
 					},
 					success: (res) => {
-						console.log(res.data.data.id);
+					res.data.data.name;
 						uni.showToast({
 							title: res.data.msg,
 							icon: 'none',
@@ -157,7 +161,7 @@
 							};
 							if (res.data.data.status == 3) {
 								uni.navigateTo({
-									url: '/pages/Merchan_registration/not_pass'+res.data.data.customer.id,
+									url: '/pages/Merchan_registration/not_pass' + res.data.data.customer.id,
 									success: res => {},
 									fail: () => {},
 									complete: () => {}
@@ -170,7 +174,8 @@
 									password: that.denglu.password,
 									id: res.data.data.id,
 									userid: res.data.data.customer.id,
-									status: res.data.data.status
+									status: res.data.data.status,
+									name:res.data.data.name,
 								}
 							});
 						};
@@ -178,7 +183,7 @@
 					},
 					fail: (err) => {
 						uni.showToast({
-							title: '登陆失败',
+							title: '登录失败',
 							mask: false,
 							icon: 'none',
 							duration: 1500

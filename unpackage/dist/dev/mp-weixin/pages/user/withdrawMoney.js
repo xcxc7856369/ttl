@@ -143,7 +143,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 var _default =
+
 {
+
   data: function data() {
     return {
       height: '',
@@ -238,13 +240,12 @@ var _default =
       var bankCard = '';
       if (that.type == 1) {
         // 支付宝
-        return;
       } else {
         bankCard = that.card[that.key].bankCardno;
       }
       if (parseInt(that.money) + brokerage <= that.allmoney) {
         uni.request({
-          url: this.serveipd + "/api/merchant/money/merchantWithdrawal",
+          url: this.serveipd + "api/merchant/money/merchantWithdrawal",
           header: {
             'Content-type': 'application/x-www-form-urlencoded' },
 
@@ -263,8 +264,8 @@ var _default =
                 duration: 2000,
                 success: function success() {
                   setTimeout(function () {
-                    uni.navigateBack({
-                      delta: 1 });
+                    uni.switchTab({
+                      url: "./index" });
 
                   }, 2000);
                 } });
@@ -273,6 +274,11 @@ var _default =
           },
           fail: function fail() {},
           complete: function complete() {} });
+
+      } else {
+        uni.showToast({
+          title: "余额不足",
+          icon: "none" });
 
       }
     } } };exports.default = _default;
@@ -306,21 +312,6 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var l0 = _vm.card.map(function(item, index) {
-    var g0 = item.bankCardno.slice(-4)
-    return {
-      $orig: _vm.__get_orig(item),
-      g0: g0
-    }
-  })
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        l0: l0
-      }
-    }
-  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -161,7 +161,8 @@ var _default =
       height: '',
       opens: -1,
       merchantId: '',
-      orders: '' };
+      orders: [],
+      page: 1 };
 
   },
   onLoad: function onLoad() {
@@ -174,12 +175,14 @@ var _default =
       } });
 
   },
-  // 下拉刷新
-  onPullDownRefresh: function onPullDownRefresh() {
-    this.load_newOrders();
-    setTimeout(function () {
-      uni.stopPullDownRefresh();
-    }, 1000);
+  onShow: function onShow() {
+    this.page = 1;
+    this.refundOrder();
+  },
+  // 上拉加载
+  onReachBottom: function onReachBottom() {
+    this.page++;
+    this.refundOrder();
   },
   onReady: function onReady() {
     this.getTopheight();
@@ -197,15 +200,13 @@ var _default =
       uni.openLocation({
         latitude: latitude,
         longitude: longitude,
-        success: function success() {
-        } });
+        success: function success() {} });
 
     },
     dh: function dh(phone) {
       uni.makePhoneCall({
         phoneNumber: phone,
-        success: function success(res) {
-        } });
+        success: function success(res) {} });
 
     },
     open: function open(index) {
@@ -218,15 +219,28 @@ var _default =
     },
     refundOrder: function refundOrder() {
       var that = this;
+      var neworder = [];
+      uni.showLoading({});
+
+
       uni.request({
         url: this.serveipd + '/api/merchant/order/refundOrder',
         method: 'GET',
         data: {
-          merchantId: that.merchantId },
+          merchantId: that.merchantId,
+          page: that.page },
 
         success: function success(res) {
-          that.orders = res.data.data;
-          console.log(res);
+          uni.hideLoading();
+          neworder = res.data.data;
+          if (neworder.length == 0) {
+            uni.showToast({
+              title: '没有更多数据',
+              icon: 'none' });
+
+            return;
+          }
+          that.orders = that.orders.concat(neworder);
         },
         fail: function fail() {},
         complete: function complete() {} });

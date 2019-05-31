@@ -218,8 +218,8 @@ var _default =
             duration: 2000,
             success: function success() {
               setTimeout(function () {
-                uni.navigateBack({
-                  data: 1 });
+                uni.navigateTo({
+                  url: "./refund" });
 
               }, 2000);
 
@@ -256,8 +256,8 @@ var _default =
             duration: 2000,
             success: function success() {
               setTimeout(function () {
-                uni.navigateBack({
-                  data: 1 });
+                uni.navigateTo({
+                  url: "./refund" });
 
               }, 2000);
 

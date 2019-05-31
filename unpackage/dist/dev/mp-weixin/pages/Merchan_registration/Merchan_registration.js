@@ -358,6 +358,8 @@ function getDate(confirmtype) {
 {
   data: function data() {var _qua, _ref;
     return _ref = {
+      latitude: '',
+      longitude: '',
       top: '',
       underline1: "2px solid #E33E09",
       underline2: "",
@@ -368,7 +370,7 @@ function getDate(confirmtype) {
       areaId: '',
       id: '',
       cityData: '',
-      citytext: '',
+      citytext: '请选择',
       citylist: [
       [],
       [],
@@ -389,7 +391,7 @@ function getDate(confirmtype) {
       next3: "#DDDDDD",
       shop_color: "#DDDDDD",
       orange: "#E33D09",
-      store_address_1: '',
+      store_address_1: '请输入门店地址',
       multiIndex: [0, 0, 0],
       date: getDate({
         format: true }),
@@ -414,7 +416,7 @@ function getDate(confirmtype) {
     false), _defineProperty(_ref, "code_error",
     false), _defineProperty(_ref, "pickerText",
     ''), _defineProperty(_ref, "pickerProducts",
-    ''), _defineProperty(_ref, "mode",
+    '请选择'), _defineProperty(_ref, "mode",
     ''), _defineProperty(_ref, "deepLength",
     1), _defineProperty(_ref, "pickerValueDefault",
     [0]), _defineProperty(_ref, "pickerValueArray",
@@ -527,6 +529,18 @@ function getDate(confirmtype) {
     this.getCityData();
   },
   methods: {
+    // 获取当前地址
+    getaddress: function getaddress() {
+      var that = this;
+      uni.chooseLocation({
+        success: function success(e) {
+          console.log(e.latitude);
+          that.store_address_1 = e.address;
+          that.latitude = e.latitude;
+          that.longitude = e.longitude;
+        } });
+
+    },
     getTopheight: function getTopheight() {
       var that = this;
       uni.getSystemInfo({
@@ -631,6 +645,7 @@ function getDate(confirmtype) {
     },
     // 下一步
     basic_step_next: function basic_step_next() {var _this3 = this;
+      this.step_next = -100;
       var that = this;
       var reg_name = /^[\u4E00-\u9FA5\uf900-\ufa2d·s]{2,20}$/;
       var reg_phone = /^1[34578]\d{9}$/;
@@ -776,8 +791,9 @@ function getDate(confirmtype) {
             uni.showToast({
               title: '发送短信验证码失败',
               icon: "none",
-              duration: F2000 });
+              duration: 2000 });
 
+            that.yanzheng();
             return false;
           };
           if (res.data.code == 706) {
@@ -787,6 +803,7 @@ function getDate(confirmtype) {
               icon: "none",
               duration: 2000 });
 
+            that.yanzheng();
             return false;
           };
           if (res.data.code == 705) {
@@ -796,6 +813,7 @@ function getDate(confirmtype) {
               icon: "none",
               duration: 2000 });
 
+            that.yanzheng();
             return false;
           };
         },
@@ -818,20 +836,32 @@ function getDate(confirmtype) {
     // 近景远景
     add_near: function add_near() {
       var that = this;
+      if (that.mendianlist.length >= 2) {
+        uni.showToast({
+          title: "最多只能选两张",
+          icon: 'none' });
+
+        return;
+      }
       uni.chooseImage({
-        count: 2, //默认9
+        count: 2 - that.mendianlist.length, //默认9
         sizeconfirmtype: ['original', 'compressed'],
         success: function success(res) {
           var url = res.tempFiles;
-          that.mendianlist.push(url[0].path);
-          uni.uploadFile({
-            url: that.serveipd + "/ajax/upfile", //仅为示例，非真实的接口地址
-            filePath: url[0].path,
-            name: 'upfile',
-            formData: {},
-            success: function success(uploadFileRes) {
-              that.mendian.push(JSON.parse(uploadFileRes.data).id);
-            } });
+          for (var i = 0; i < url.length; i++) {
+            that.mendianlist.push(url[i].path);
+          }
+          for (var _i5 = 0; _i5 < url.length; _i5++) {
+            uni.uploadFile({
+              url: that.serveipd + "/ajax/upfile", //仅为示例，非真实的接口地址
+              filePath: url[_i5].path,
+              name: 'upfile',
+              formData: {},
+              success: function success(uploadFileRes) {
+                that.mendian.push(JSON.parse(uploadFileRes.data).id);
+              } });
+
+          }
 
         } });
 
@@ -839,21 +869,34 @@ function getDate(confirmtype) {
     // 店内环境
     add_inside: function add_inside() {
       var that = this;
+      if (that.outPiclist.length >= 2) {
+        uni.showToast({
+          title: "最多只能选两张",
+          icon: 'none' });
+
+        return;
+      }
       uni.chooseImage({
-        count: 1, //默认9
+        count: 2 - that.outPiclist.length, //默认9
         sizeconfirmtype: ['original', 'compressed'],
         success: function success(res) {
           var url = res.tempFiles;
-          that.outPiclist.push(url[0].path);
-          uni.uploadFile({
-            url: that.serveipd + "/ajax/upfile", //仅为示例，非真实的接口地址
-            filePath: url[0].path,
-            name: 'upfile',
-            formData: {},
-            success: function success(uploadFileRes) {
-              that.outPic.push(JSON.parse(uploadFileRes.data).id);
-              console.log(that.outPic);
-            } });
+          for (var i = 0; i < url.length; i++) {
+            that.outPiclist.push(url[i].path);
+          }
+          for (var _i6 = 0; _i6 < url.length; _i6++) {
+            uni.uploadFile({
+              url: that.serveipd + "/ajax/upfile", //仅为示例，非真实的接口地址
+              filePath: url[_i6].path,
+              name: 'upfile',
+              formData: {},
+              success: function success(uploadFileRes) {
+                console.log(uploadFileRes);
+                that.outPic.push(JSON.parse(uploadFileRes.data).id);
+                console.log(that.outPic);
+              } });
+
+          }
 
         } });
 
@@ -968,7 +1011,9 @@ function getDate(confirmtype) {
     },
 
     // 门店信息  下一步
+
     shop_step_next: function shop_step_next() {
+      this.step_next = -200;
       if (this.pickerProducts == "") {
         uni.showToast({
           title: '请选择经营品类',
@@ -987,7 +1032,7 @@ function getDate(confirmtype) {
 
         return;
       }
-      if (this.store_address_1 == "") {
+      if (this.store_address_1 == "请输入门店地址") {
         uni.showToast({
           title: '请输入门店地址',
           icon: "none",
@@ -1585,7 +1630,9 @@ function getDate(confirmtype) {
           categoryId: that.id,
           provinceId: that.provinceId,
           cityId: that.cityId,
-          areaId: that.areaId },
+          areaId: that.areaId,
+          longitude: that.longitude,
+          latitude: that.latitude },
 
         success: function success(res) {
           uni.hideLoading();

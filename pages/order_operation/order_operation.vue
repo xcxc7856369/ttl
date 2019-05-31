@@ -2,7 +2,7 @@
 	<view>
 		<!-- 头部导航 -->
 		<view class='navigation' :style="{height:height}">
-			<text>鲁西肥牛</text>
+			<text>{{ shopname }}</text>
 		</view>
 		<view class="order_menu" :style="{paddingTop:height}">
 			<navigator class="menu_list" url='/pages/order_operation/order_enquiry' hover-class="none">
@@ -46,6 +46,7 @@
 				],
 				merchantId:'',
 				orders:'',
+				shopname:'',
 			}
 		},
 		onLoad() {
@@ -54,6 +55,7 @@
 				key: 'userinfo',
 				success(e) {
 					that.merchantId = e.data.id;
+					that.shopname=e.data.name;
 					that.Record();
 				}
 			});
@@ -93,7 +95,4 @@
 <style>
 	@import url("../../common/order_operation.css");
 	@import url("../../common/new_order.css");
-	scroll-view{
-		height: 60vh;
-	}
 </style>

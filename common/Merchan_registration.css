@@ -2,6 +2,7 @@
 	width: 100vw;
 	overflow: hidden;
 }
+
 .navigation image {
 	width: 15.97upx;
 	height: 29.86upx;
@@ -21,7 +22,7 @@
 
 .step {
 	width: 100%;
-	height:50px;
+	height: 50px;
 	line-height: 50px;
 	background-color: #fff;
 	position: fixed;
@@ -96,20 +97,20 @@
 	border-bottom: #E6E6E6;
 	font-size: 30.55upx;
 	border-bottom: 1.38upx solid #E6E6E6;
-	align-items: center;
 	background: #fff;
-	justify-content: flex-start;
 }
 
 .infor_box>view text {
 	width: 35%;
+	height:100%;
 	display: inline-block;
 }
 
 .infor_box>view input {
 	display: inline-block;
-	width: 50vw;
+	width: 65%;
 	vertical-align: middle;
+	white-space: wrap;
 }
 
 .step_next {
@@ -222,4 +223,18 @@
 
 .tab.active {
 	color: #f00;
+}
+.infor_box>view  .getaddress{
+	display: inline-block;
+	width: 65%;
+	color:#666;
+}
+.infor_box .address{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.basic_content .cat_text{
+	width: 60vw;
+	color:#666
 }

@@ -247,10 +247,12 @@ var _default =
       tg: true,
       opens: -1,
       merchantId: '',
-      wait_orders: '',
+      wait_orders: [],
       newOrders_page: 1,
       wait_delivery_page: 1,
-      nomore: true };
+      nomore: true,
+      index: '',
+      shopname: '' };
 
 
   },
@@ -260,9 +262,10 @@ var _default =
       key: 'userinfo',
       success: function success(e) {
         that.merchantId = e.data.id;
-        that.load_newOrders();
-        that.wait_delivery();
-        that.reminder();
+        that.shopname = e.data.name;
+        that.down_newOrders();
+        that.down_delivery();
+        // that.reminder();
       } });
 
   },
@@ -272,18 +275,23 @@ var _default =
   onShow: function onShow() {},
   // 下拉刷新
   onPullDownRefresh: function onPullDownRefresh() {
-    this.load_newOrders();
-    this.wait_delivery_page();
+    if (this.index == 0) {
+      this.down_newOrders();
+    } else if (this.index == 1) {
+      this.down_delivery();
+    }
+
     setTimeout(function () {
       uni.stopPullDownRefresh();
     }, 1000);
   },
   // 上拉加载
   onReachBottom: function onReachBottom() {
-    if (this.nomore) {
+    if (this.index == 0) {
       this.newOrders_page++;
-      this.wait_delivery_page++;
       this.load_newOrders();
+    } else if (this.index == 1) {
+      this.wait_delivery_page++;
       this.wait_delivery();
     }
 
@@ -299,20 +307,17 @@ var _default =
 
     },
     onTap: function onTap(index) {
+      this.index = index;
       if (this.current != index) {
         this.current = index;
+        this.$forceUpdate();
       };
-      if (index == 0) {
-        this.load_newOrders();
-      };
-      if (index == 1) {
-        this.wait_delivery();
-        this.wait_delivery_page = 1;
-      };
+
     },
     // 生成新订单
     load_newOrders: function load_newOrders() {
       var that = this;
+      uni.showLoading();
       uni.request({
         url: this.serveipd + '/api/merchant/order/newOrders',
         method: 'GET',
@@ -321,23 +326,40 @@ var _default =
           page: that.newOrders_page },
 
         success: function success(res) {
-          console.log(res.data.data);
+          uni.hideLoading();
+          var neworder = [];
+          neworder = res.data.data;
+          that.orders = that.orders.concat(neworder);
           if (res.data.data.length == 0) {
-            that.nomore = false;
             uni.showToast({
               title: "没有更多数据了",
               icon: 'none' });
 
             return;
           }
-          that.orders = that.orders.concat(res.data.data);
         },
         fail: function fail() {},
         complete: function complete() {} });
 
     },
-    //待配送列表
-    wait_delivery: function wait_delivery() {
+    // 新订单下拉刷新
+    down_newOrders: function down_newOrders() {
+      var that = this;
+      uni.request({
+        url: that.serveipd + '/api/merchant/order/newOrders',
+        method: 'GET',
+        data: {
+          merchantId: that.merchantId },
+
+        success: function success(res) {
+          that.orders = res.data.data;
+        },
+        fail: function fail() {},
+        complete: function complete() {} });
+
+    },
+    // 待配送下拉刷新
+    down_delivery: function down_delivery() {
       var that = this;
       uni.request({
         url: that.serveipd + '/api/merchant/order/delivery',
@@ -347,6 +369,35 @@ var _default =
 
         success: function success(res) {
           that.wait_orders = res.data.data;
+        },
+        fail: function fail() {},
+        complete: function complete() {} });
+
+    },
+    //待配送列表
+    wait_delivery: function wait_delivery() {
+      var that = this;
+      uni.showLoading();
+      uni.request({
+        url: that.serveipd + '/api/merchant/order/delivery',
+        method: 'GET',
+        data: {
+          merchantId: that.merchantId,
+          page: that.wait_delivery_page },
+
+        success: function success(res) {
+          uni.hideLoading();
+          var waitorder = [];
+          waitorder = res.data.data;
+          that.wait_orders = that.wait_orders.concat(waitorder);
+          console.log(res);
+          if (res.data.data.length == 0) {
+            uni.showToast({
+              title: "没有更多数据了",
+              icon: 'none' });
+
+            return;
+          }
         },
         fail: function fail() {},
         complete: function complete() {} });
@@ -387,7 +438,7 @@ var _default =
         this.opens = -1;
       }
     },
-    // 立即接收
+    // 立即接单
     receive: function receive(orderno) {
       var that = this;
       uni.request({
@@ -402,8 +453,7 @@ var _default =
             title: res.data.msg,
             duration: 2000 });
 
-          that.load_newOrders();
-          that.wait_delivery();
+          that.down_newOrders();
         } });
 
     },
@@ -421,7 +471,7 @@ var _default =
             title: res.data.msg,
             duration: 2000 });
 
-          that.wait_delivery();
+          that.down_delivery();
         } });
 
     } } };exports.default = _default;

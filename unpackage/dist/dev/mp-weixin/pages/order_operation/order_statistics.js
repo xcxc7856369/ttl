@@ -213,11 +213,14 @@ var _default =
       items: ["今日订单", "历史订单"],
       current: 0,
       merchantId: '',
-      orders: '',
+      orders: [],
       opens: -1,
       tg: true,
       height_a: "1px",
-      orderDays: "" };
+      orderDays: [],
+      index: 0,
+      page: 1,
+      histor_page: 1 };
 
   },
   onLoad: function onLoad() {
@@ -230,6 +233,16 @@ var _default =
         that.orderDay();
       } });
 
+  },
+  // 上拉加载
+  onReachBottom: function onReachBottom() {
+    if (this.index == 0) {
+      this.page++;
+      this.orderDay();
+    } else if (this.index == 1) {
+      this.histor_page++;
+      this.historical_order();
+    }
   },
   onReady: function onReady() {
     this.getTopheight();
@@ -245,20 +258,36 @@ var _default =
 
     },
     onTap: function onTap(index) {
+      this.index = index;
       if (this.current != index) {
         this.current = index;
       };
     },
-    historical_order: function historical_order() {var _this = this;
+    historical_order: function historical_order() {
       var that = this;
+      var neworder = [];
+      uni.showLoading({});
+
+
       uni.request({
         url: this.serveipd + '/api/merchant/order/orderStatistics',
         method: 'GET',
         data: {
-          merchantId: that.merchantId },
+          merchantId: that.merchantId,
+          page: that.histor_page },
 
         success: function success(res) {
-          _this.orders = res.data.data.datas;
+          uni.hideLoading();
+          neworder = res.data.data;
+          console.log(neworder);
+          if (neworder.length == 0) {
+            uni.showToast({
+              title: '没有更多数据',
+              icon: 'none' });
+
+            return;
+          }
+          that.orders = that.orders.concat(neworder);
         },
         fail: function fail() {},
         complete: function complete() {} });
@@ -266,15 +295,28 @@ var _default =
     },
     orderDay: function orderDay() {
       var that = this;
+      var neworder = [];
+      uni.showLoading({});
+
+
       uni.request({
         url: this.serveipd + '/api/merchant/order/orderDay',
         method: 'GET',
         data: {
-          merchantId: that.merchantId },
+          merchantId: that.merchantId,
+          page: that.page },
 
         success: function success(res) {
-          console.log(res);
-          that.orderDays = res.data.data.datas;
+          uni.hideLoading();
+          neworder = res.data.data;
+          if (neworder.length == 0) {
+            uni.showToast({
+              title: '没有更多数据',
+              icon: 'none' });
+
+            return;
+          }
+          that.orderDays = that.orderDays.concat(neworder);
         },
         fail: function fail() {},
         complete: function complete() {} });

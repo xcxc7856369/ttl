@@ -7,7 +7,7 @@
 			</navigator>
 			<view class="title">退款订单</view>
 			<view class="right"></view>
-		</view>	
+		</view>
 		<view class="content" :style="{paddingTop:height}">
 			<view class="order_box">
 				<view class="order_list" v-for="(item,index) in orders" :key="item.id">
@@ -60,8 +60,9 @@
 			return {
 				height: '',
 				opens: -1,
-				merchantId:'',
-				orders:'',
+				merchantId: '',
+				orders: [],
+				page: 1,
 			}
 		},
 		onLoad() {
@@ -74,12 +75,14 @@
 				}
 			});
 		},
-		// 下拉刷新
-		onPullDownRefresh() {
-			this.load_newOrders();
-			setTimeout(function() {
-				uni.stopPullDownRefresh();
-			}, 1000);
+		onShow() {
+			this.page=1;
+			this.refundOrder();
+		},
+		// 上拉加载
+		onReachBottom() {
+			this.page++;
+			this.refundOrder();
 		},
 		onReady() {
 			this.getTopheight();
@@ -97,15 +100,13 @@
 				uni.openLocation({
 					latitude: latitude,
 					longitude: longitude,
-					success: function() {
-					}
+					success: function() {}
 				});
 			},
 			dh: function(phone) {
 				uni.makePhoneCall({
 					phoneNumber: phone,
-					success: function(res) {
-					}
+					success: function(res) {}
 				});
 			},
 			open: function(index) {
@@ -118,15 +119,28 @@
 			},
 			refundOrder: function() {
 				let that = this;
+				let neworder = [];
+				uni.showLoading({
+					
+				})
 				uni.request({
 					url: this.serveipd + '/api/merchant/order/refundOrder',
 					method: 'GET',
 					data: {
 						merchantId: that.merchantId,
+						page: that.page,
 					},
 					success: res => {
-						that.orders = res.data.data;
-						console.log(res)
+						uni.hideLoading();
+						neworder = res.data.data;
+						if (neworder.length == 0) {
+							uni.showToast({
+								title: '没有更多数据',
+								icon: 'none'
+							});
+							return
+						}
+						that.orders = that.orders.concat(neworder);
 					},
 					fail: () => {},
 					complete: () => {}
@@ -135,7 +149,7 @@
 			see_infor: function(orderno) {
 				let that = this;
 				uni.navigateTo({
-					url:"./refund_details?orderno="+orderno,
+					url: "./refund_details?orderno=" + orderno,
 				})
 			},
 		}
@@ -143,5 +157,5 @@
 </script>
 
 <style>
-	@import url("../../common/new_order.css") ;
+	@import url("../../common/new_order.css");
 </style>
