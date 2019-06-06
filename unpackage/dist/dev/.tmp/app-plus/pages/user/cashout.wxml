@@ -1,2 +1,0 @@
-<import src="./cashout.vue.wxml" />
-    <template is="7ea91ddb" data="{{ ...$root['0'], $root }}"/>

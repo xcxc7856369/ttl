@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "评价管理",
-  "navigationBarTextStyle": "white",
-  "navigationBarBackgroundColor": "#ED721F",
-  "usingComponents": {
-    "uni-rate": "/components/uni-rate/uni-rate"
-  }
-}

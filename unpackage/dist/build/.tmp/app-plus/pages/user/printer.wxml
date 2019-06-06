@@ -1,2 +1,0 @@
-<import src="./printer.vue.wxml" />
-    <template is="4ad262ba" data="{{ ...$root['0'], $root }}"/>

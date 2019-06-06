@@ -1,2 +1,0 @@
-<import src="./busnotice.vue.wxml" />
-    <template is="0c68a7f8" data="{{ ...$root['0'], $root }}"/>

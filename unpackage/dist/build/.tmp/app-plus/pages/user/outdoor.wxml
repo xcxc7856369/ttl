@@ -1,2 +1,0 @@
-<import src="./outdoor.vue.wxml" />
-    <template is="1ba1169c" data="{{ ...$root['0'], $root }}"/>

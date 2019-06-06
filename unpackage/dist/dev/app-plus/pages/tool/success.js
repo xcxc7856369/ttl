@@ -1,2 +1,0 @@
-setCssToHead([".",[1],"viewimg{ width:5rem; height: 5rem; margin:10rem auto 0; }\n.",[1],"viewimg wx-image{ width: 100%; height: 100%; }\n.",[1],"title{ width:100%; height:1rem; font-size:",[0,28],"; font-weight:400; color:rgba(51,51,51,1); line-height:1.6rem; margin-top: 2rem; text-align: center; }\n",],undefined,{path:"./pages/tool/success.wxss"})();
-document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/tool/success.wxml') } }));

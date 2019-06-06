@@ -1,2 +1,0 @@
-<import src="./Merchan_registration.vue.wxml" />
-    <template is="8f10006a" data="{{ ...$root['0'], $root }}"/>

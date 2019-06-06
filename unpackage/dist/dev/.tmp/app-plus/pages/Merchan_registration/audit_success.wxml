@@ -1,2 +1,0 @@
-<import src="./audit_success.vue.wxml" />
-    <template is="58505a80" data="{{ ...$root['0'], $root }}"/>

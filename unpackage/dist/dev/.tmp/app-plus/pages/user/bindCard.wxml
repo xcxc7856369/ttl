@@ -1,2 +1,0 @@
-<import src="./bindCard.vue.wxml" />
-    <template is="e6133366" data="{{ ...$root['0'], $root }}"/>
